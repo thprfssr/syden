@@ -1,7 +1,7 @@
 CC = gcc
 flags = -w -lm -lSDL2 -lSDL2_image
 objects = main.o window.o game.o
-targets = Cythen
+targets = Syden
 
 all: $(targets)
 	make $(targets)
