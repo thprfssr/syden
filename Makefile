@@ -6,7 +6,7 @@ targets = Syden
 all: $(targets)
 	make $(targets)
 
-Cythen: $(objects)
+Syden: $(objects)
 	$(CC) $(flags) -o $@ $(objects)
 
 main.o:
