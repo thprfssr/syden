@@ -7,12 +7,12 @@ SDL_Window* open_window(const char *name)
 
 	Uint32 window_flags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 	window = SDL_CreateWindow(name,
-				  SDL_WINDOW_POS_UNDEFINED,
-				  SDL_WINDOW_POS_UNDEFINED,
+				  SDL_WINDOWPOS_UNDEFINED,
+				  SDL_WINDOWPOS_UNDEFINED,
 				  300, 300, window_flags);
 	SDL_SetWindowMinimumSize(window, 200, 200);
 	
-	inf img_flags = IMG_INIT_PNG;
+	int img_flags = IMG_INIT_PNG;
 
 	return window;
 }
