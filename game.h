@@ -5,7 +5,6 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
-#include "game.h"
 #include "window.h"
 
 bool handle_event(SDL_Event event);
