@@ -9,9 +9,9 @@ all: $(targets)
 Syden: $(objects)
 	$(CC) $(flags) -o $@ $(objects)
 
-main.o:
-window.o:
-game.o:
+main.o: game.h window.h
+window.o: window.h
+game.o: game.h window.h
 
 .PHONY: clean
 clean:
