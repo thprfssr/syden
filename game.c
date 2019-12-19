@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "game.h"
+#include "screen.h"
 #include "window.h"
 
 /* If this function returns true, then the game loop continues. If it returns
@@ -43,7 +44,7 @@ void play()
 			loop_condition = handle_event(event);
 
 		/* Overwrite every pixel in the window surface and in the game
-		 * screen with a solid color. */
+		 * screen with a solid color, and draw the game screen. */
 		window_surface = SDL_GetWindowSurface(window);
 		SDL_FillRect(window_surface, NULL,
 			     SDL_MapRGB(window_surface->format,
@@ -51,6 +52,7 @@ void play()
 		SDL_FillRect(game_screen, NULL,
 			     SDL_MapRGB(game_screen->format,
 					0xff, 0xff, 0xff));
+		draw_game_screen(game_screen);
 
 		/* Evenly scale the game screen to fit snuggly within the main
 		 * window screen. */
