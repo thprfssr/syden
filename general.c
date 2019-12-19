@@ -23,7 +23,7 @@ char* read_file(char *filename)
 
 	if (buffer)
 	{
-		printf(buffer);
+		return buffer;
 	}
 }
 
