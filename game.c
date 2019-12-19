@@ -51,6 +51,12 @@ void play()
 			     SDL_MapRGB(game_screen->format,
 					0xff, 0xff, 0xff));
 
+		/* Evenly scale the game screen to fit snuggly within the main
+		 * window screen. */
+		letterbox(game_screen, window_surface);
+
+		/* Update the main window surface to reflect changes, and sleep
+		 * for a specified amount of milliseconds. */
 		SDL_UpdateWindowSurface(window);
 		SDL_Delay(16); // Sleep for however many milliseconds.
 	}

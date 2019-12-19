@@ -81,13 +81,13 @@ void letterbox(SDL_Surface *src, SDL_Surface *dst)
 		y_new = 0;
 	}
 
-	SDL_Rect *rect;
-	rect->x = x_new;
-	rect->y = y_new;
-	rect->w = w_new;
-	rect->h = h_new;
+	SDL_Rect rect;
+	rect.x = x_new;
+	rect.y = y_new;
+	rect.w = w_new;
+	rect.h = h_new;
 
 	/* Null, because we're selecting the entirety of src and placing it
 	 * within a portion of dst, defined by the rectangle rect. */
-	SDL_BlitScaled(src, NULL, dst, rect);
+	SDL_BlitScaled(src, NULL, dst, &rect);
 }
