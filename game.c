@@ -23,13 +23,14 @@ bool handle_event(SDL_Event event)
 
 void play()
 {
-	SDL_Window *window = open_window("Test Window");
+	SDL_Window *window = open_window(MAIN_WINDOW_TITLE);
 	SDL_Surface *window_surface = NULL;
 
 	/* This is the representation of the game screen. It has the proper
 	 * pixel dimensions. We will scale this surface to fit within the
 	 * window. */
-	SDL_Surface *game_screen = create_game_screen(100, 100);
+	SDL_Surface *game_screen = create_game_screen(GAME_SCREEN_WIDTH,
+						      GAME_SCREEN_HEIGHT);
 
 	bool loop_condition = true;
 	while (loop_condition) {
@@ -58,6 +59,6 @@ void play()
 		/* Update the main window surface to reflect changes, and sleep
 		 * for a specified amount of milliseconds. */
 		SDL_UpdateWindowSurface(window);
-		SDL_Delay(16); // Sleep for however many milliseconds.
+		SDL_Delay(1000 / DESIRED_FPS);
 	}
 }
