@@ -39,3 +39,16 @@ int count_lines(char *string)
 	/* The number of lines is just the number of newlines, plus one. */
 	return 1 + count;
 }
+
+/* Count the number of entries in the first line of a CSV-formatted string. */
+int count_first_line_entries(char *string)
+{
+	char line_delim = '\n';
+	char entry_delim = ',';
+	int count = 0;
+	for (int i = 0; i < strlen(string) && string[i] != line_delim; i++)
+		if (string[i] == entry_delim)
+			count++;
+	/* The number of entries is just the number of commas, plus one. */
+	return 1 + count;
+}
