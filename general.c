@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #include "general.h"
 
+/* Read the contents of a file into  a string. */
 char* read_file(char *filename)
 {
 	char *buffer = NULL;
@@ -24,4 +25,17 @@ char* read_file(char *filename)
 	{
 		printf(buffer);
 	}
+}
+
+
+/* Count the number of lines in a string. */
+int count_lines(char *string)
+{
+	char delim = '\n';
+	char count = 0;
+	for (int i = 0; i < strlen(string); i++)
+		if (string[i] == delim)
+			count++;
+	/* The number of lines is just the number of newlines, plus one. */
+	return 1 + count;
 }
