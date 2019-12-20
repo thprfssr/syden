@@ -82,3 +82,35 @@ char** read_lines(char *string)
 
 	return entries;
 }
+
+/* This function takes a CSV-formatted string, and returns a one-dimensional
+ * array containing all the CSV entries. The following assumptions are made
+ * regarding the string:
+ * 	* No empty lines
+ * 	* No empty entries
+ * 	* No entries containing commas
+ * 	* All lines have the same number of entries
+ */
+char** read_csv_entries(char *string)
+{
+	int H = count_lines(string);
+	int W = count_first_line_entries(string);
+	int L = strlen(string);
+
+	char **lines = read_lines(string);
+	char **entries = malloc(L * sizeof(char));
+
+	/* Copy the string, because strtok alters its input. */
+	char *copy = malloc(L * sizeof(char));
+	strcpy(copy, string);
+
+	/* Obtain all the entries, using commas and newlines as delimiters. */
+	char *entry = strtok(copy, ",\n");
+	for (int i = 0; i < H * W; i++) {
+		entries[i] = entry;
+
+		entry = strtok(NULL, ",\n");
+	}	
+
+	return entries;
+}
