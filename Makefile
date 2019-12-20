@@ -11,8 +11,8 @@ Syden: $(objects)
 
 main.o: game.h window.h
 window.o: window.h
-game.o: game.h window.h
-screen.o: screen.h
+game.o: game.h window.h config.h
+screen.o: screen.h config.h
 general.o: general.h
 
 .PHONY: clean
