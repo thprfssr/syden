@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
+
 #include "general.h"
 
 /* Read the contents of a file into  a string. */
@@ -113,4 +116,11 @@ char** read_csv_entries(char *string)
 	}	
 
 	return entries;
+}
+
+/* This function reads an image into an SDL surface object. */
+SDL_Surface* load_resource(char *filename)
+{
+	SDL_Surface *surface = IMG_Load(filename);
+	return surface;
 }
