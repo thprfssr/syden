@@ -12,7 +12,7 @@ Syden: $(objects)
 main.o: game.h window.h
 window.o: window.h
 game.o: game.h window.h config.h screen.h
-screen.o: screen.h config.h
+screen.o: screen.h config.h tiles.h
 general.o: general.h
 tiles.o: tiles.h general.h config.h
 
