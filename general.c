@@ -29,7 +29,7 @@ char* read_file(char *filename)
 
 
 /* Count the number of lines in a string. It is assumed that there are no empty
- * lines. */
+ * lines, and that the string is newline-terminated. */
 int count_lines(char *string)
 {
 	char delim = '\n';
@@ -37,8 +37,10 @@ int count_lines(char *string)
 	for (int i = 0; i < strlen(string); i++)
 		if (string[i] == delim)
 			count++;
-	/* The number of lines is just the number of newlines, plus one. */
-	return 1 + count;
+	/* The number of lines is just the number of newlines, plus one.
+	 * UNLESS the string is newline-terminated. Then, it's just the number
+	 * of newlines. */
+	return count;
 }
 
 /* Count the number of entries in the first line of a CSV-formatted string. It
