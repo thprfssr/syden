@@ -6,5 +6,6 @@
 char* read_file(char *filename);
 int count_lines(char *string);
 int count_first_line_entries(char *string);
+char **read_lines(char *string);
 
 #endif
