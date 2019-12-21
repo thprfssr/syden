@@ -1,5 +1,5 @@
 CC = gcc
-flags = -w -lm -lSDL2 -lSDL2_image
+flags = -w -lm -lSDL2 -lSDL2_image -lSDL2_mixer
 objects = main.o window.o game.o screen.o general.o tiles.o camera.o controls.o
 targets = Syden
 
