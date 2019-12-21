@@ -11,8 +11,8 @@ Syden: $(objects)
 
 main.o: game.h window.h
 window.o: window.h
-game.o: game.h window.h config.h screen.h
-screen.o: screen.h config.h tiles.h
+game.o: game.h window.h config.h screen.h controls.h
+screen.o: screen.h config.h tiles.h controls.h general.h camera.h
 general.o: general.h
 tiles.o: tiles.h general.h config.h
 camera.o: camera.h

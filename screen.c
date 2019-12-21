@@ -5,6 +5,7 @@
 #include "config.h"
 #include "controls.h"
 #include "general.h"
+#include "screen.h"
 #include "tiles.h"
 
 int X = 0;

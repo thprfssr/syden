@@ -3,6 +3,7 @@
 
 #include "config.h"
 #include "general.h"
+#include "tiles.h"
 
 /* This function accepts a given tile atlas and an integer, and returns the n-th
  * tile within the tile atlas. */
