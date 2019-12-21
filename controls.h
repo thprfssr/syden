@@ -1,6 +1,8 @@
 #ifndef CONTROLS_H
 #define CONTROLS_H
 
+#include <stdbool.h>
+
 #define BUTTON_UP	(1 << 0)
 #define BUTTON_DOWN	(1 << 1)
 #define BUTTON_LEFT	(1 << 2)
@@ -16,8 +18,8 @@
 
 int CONTROLLER_STATUS = 0;
 
-
-
-
+void button_pressed(int button);
+void button_released(int button);
+bool is_buton_pressed(int button);
 
 #endif
