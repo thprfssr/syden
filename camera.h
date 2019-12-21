@@ -1,3 +1,6 @@
+#ifndef CAMERA_H
+#define CAMERA_H
+
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -11,3 +14,5 @@ void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center)
 /* This function checks whether the camera view goes beyond the boundaries of
  * a given surface. */
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);
+
+#endif
