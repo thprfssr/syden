@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "config.h"
+#include "controls.h"
 #include "game.h"
 #include "screen.h"
 #include "window.h"
@@ -16,6 +17,11 @@ bool handle_event(SDL_Event event)
 		case SDL_QUIT:
 			loop_condition = false;
 			break;
+		case SDL_KEYDOWN:
+			handle_input(event.key);
+			break;
+		case SDL_KEYUP:
+			handle_input(event.key);
 		default:
 			break;
 	}
