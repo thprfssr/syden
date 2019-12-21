@@ -21,7 +21,7 @@ int CONTROLLER_STATUS = 0;
 
 void button_pressed(int button);
 void button_released(int button);
-bool is_buton_pressed(int button);
+bool is_button_pressed(int button);
 void handle_input(SDL_KeyboardEvent event);
 
 #endif

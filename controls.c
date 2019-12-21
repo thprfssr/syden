@@ -16,7 +16,7 @@ void button_released(int button)
 	CONTROLLER_STATUS &= ~button;
 }
 
-bool is_buton_pressed(int button)
+bool is_button_pressed(int button)
 {
 	return CONTROLLER_STATUS & button;
 }
