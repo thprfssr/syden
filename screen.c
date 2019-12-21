@@ -10,11 +10,15 @@
  * been overwritten with a solid color. */
 void draw_game_screen(SDL_Surface *screen)
 {
+	/* Load resources. */
 	SDL_Surface *tile_atlas = load_resource(TILE_ATLAS_PATH);
 	char *map_csv = read_file("resources/test_map.csv");
 
+	/* Copy the region onto the screen. */
 	SDL_Surface *region = draw_region(tile_atlas, map_csv);
 	SDL_BlitSurface(region, NULL, screen, NULL);
 
+	/* Free resources. */
 	SDL_FreeSurface(region);
+	free(map_csv);
 }
