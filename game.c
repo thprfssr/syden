@@ -1,8 +1,8 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
-#include <SDL2/SDL_mixer.h>
 
+#include "audio.h"
 #include "config.h"
 #include "controls.h"
 #include "game.h"
@@ -33,11 +33,14 @@ bool handle_event(SDL_Event event)
 void play()
 {
 	/* Play music. */
+	/*
 	Mix_Music *music;
 	Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 2048);
 	music = Mix_LoadMUS("resources/sacredwar.mp3");
 	Mix_VolumeMusic(100);
 	Mix_PlayMusic(music, -1);
+	*/
+	play_soundtrack("resources/sacredwar.mp3");
 
 
 	SDL_Window *window = open_window(MAIN_WINDOW_TITLE);
