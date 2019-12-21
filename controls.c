@@ -3,6 +3,8 @@
 
 #include "controls.h"
 
+int CONTROLLER_STATUS = 0;
+
 /* This function accepts an integer, and updates the global variable
  * `CONTROLLER_STATUS` accordingly. */
 void button_pressed(int button)
