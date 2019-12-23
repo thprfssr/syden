@@ -33,7 +33,7 @@ bool handle_event(SDL_Event event)
 void play()
 {
 	/* Play music. */
-	play_soundtrack("resources/slavianka.mp3");
+	play_soundtrack("resources/sacredwar.mp3");
 
 
 	SDL_Window *window = open_window(MAIN_WINDOW_TITLE);
