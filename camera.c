@@ -4,6 +4,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "camera.h"
+#include "controls.h"
 #include "general.h"
 
 double CAMERA_POSITION_X = 0;
@@ -90,4 +91,19 @@ void move_camera(int direction, double magnitude)
 		default:
 			break;
 	}
+}
+
+/* This function acts as a link between the abstract game controller and the
+ * camera position. If a button is pressed, then the camera is moved
+ * accordingly. */
+void camera_movement_interface(double magnitude)
+{
+	if (is_button_pressed(BUTTON_UP))
+		move_camera(NORTH, magnitude);
+	if (is_button_pressed(BUTTON_DOWN))
+		move_camera(SOUTH, magnitude);
+	if (is_button_pressed(BUTTON_LEFT))
+		move_camera(WEST, magnitude);
+	if (is_button_pressed(BUTTON_RIGHT))
+		move_camera(EAST, magnitude);
 }
