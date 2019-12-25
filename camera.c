@@ -58,7 +58,7 @@ void move_camera(int direction, double magnitude)
 			CAMERA_POSITION_X += magnitude;
 			break;
 		case (WEST):
-			CAMERA_POSITION_Y -= magnitude;
+			CAMERA_POSITION_X -= magnitude;
 			break;
 		case (NORTH | EAST):
 			CAMERA_POSITION_X += magnitude / sqrt(2);
@@ -89,6 +89,8 @@ void move_camera(int direction, double magnitude)
 			CAMERA_POSITION_Y += magnitude / sqrt(2);
 			break;
 		default:
+			CAMERA_POSITION_X = round(CAMERA_POSITION_X);
+			CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
 			break;
 	}
 }
