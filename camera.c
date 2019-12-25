@@ -114,3 +114,20 @@ void round_camera_position()
 	CAMERA_POSITION_X = round(CAMERA_POSITION_X);
 	CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
 }
+
+/* This function forces the fractional parts of the camera coordinates to be
+ * equal. We do this in the hopes of eliminating the jittery motion that occurs
+ * when moving diagonally. */
+void equalize_camera_position_fractional_parts()
+{
+	/* First take the modulus base 1. */
+	frac_x = fmod(CAMERA_POSITION_X, 1);
+	frac_y = fmod(CAMERA_POSITION_Y, 1);
+
+	/* Now, let the new fractional part be the average of these. */
+	frac = (frac_x + frac_y) / 2;
+
+	/* Modify the camera coordinates. */
+	CAMERA_POSITION_X = floor(CAMERA_POSITION_X) + frac;
+	CAMERA_POSITION_Y = floor(CAMERA_POSITION_Y) + frac;
+}
