@@ -18,10 +18,12 @@
 #define BUTTON_R	(1 << 11)
 
 int CONTROLLER_STATUS;
+int PREVIOUS_CONTROLLER_STATUS;
 
 void button_pressed(int button);
 void button_released(int button);
 bool is_button_pressed(int button);
+bool controller_status_changed();
 void handle_input(SDL_KeyboardEvent event);
 
 #endif

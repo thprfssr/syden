@@ -4,23 +4,32 @@
 #include "controls.h"
 
 int CONTROLLER_STATUS = 0;
+int PREVIOUS_CONTROLLER_STATUS = 0;
 
 /* This function accepts an integer, and updates the global variable
  * `CONTROLLER_STATUS` accordingly. */
 void button_pressed(int button)
 {
+	PREVIOUS_CONTROLLER_STATUS = CONTROLLER_STATUS;
 	CONTROLLER_STATUS |= button;
 }
 
 /* This function is analogous to `button_pressed()`. */
 void button_released(int button)
 {
+	PREVIOUS_CONTROLLER_STATUS = CONTROLLER_STATUS;
 	CONTROLLER_STATUS &= ~button;
 }
 
 bool is_button_pressed(int button)
 {
 	return CONTROLLER_STATUS & button;
+}
+
+/* This function returns true if the controller status changed. */
+bool controller_status_changed()
+{
+	return PREVIOUS_CONTROLLER_STATUS != CONTROLLER_STATUS;
 }
 
 void handle_input(SDL_KeyboardEvent event)
