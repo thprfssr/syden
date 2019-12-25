@@ -89,8 +89,6 @@ void move_camera(int direction, double magnitude)
 			CAMERA_POSITION_Y += magnitude / sqrt(2);
 			break;
 		default:
-			CAMERA_POSITION_X = round(CAMERA_POSITION_X);
-			CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
 			break;
 	}
 }
@@ -108,4 +106,11 @@ void camera_movement_interface(double magnitude)
 		move_camera(WEST, magnitude);
 	if (is_button_pressed(BUTTON_RIGHT))
 		move_camera(EAST, magnitude);
+}
+
+/* This function rounds the camera's coordinates. */
+void round_camera_position()
+{
+	CAMERA_POSITION_X = round(CAMERA_POSITION_X);
+	CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
 }

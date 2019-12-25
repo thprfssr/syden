@@ -12,5 +12,6 @@ void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center)
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);
 void move_camera(int direction, double magnitude);
 void camera_movement_interface(double magnitude);
+void round_camera_position();
 
 #endif
