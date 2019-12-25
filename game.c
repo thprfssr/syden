@@ -45,6 +45,9 @@ void play()
 	SDL_Surface *game_screen = create_game_screen(GAME_SCREEN_WIDTH,
 						      GAME_SCREEN_HEIGHT);
 
+	/* Load screen resources. */
+	load_screen_resources();
+
 	bool loop_condition = true;
 	while (loop_condition) {
 
