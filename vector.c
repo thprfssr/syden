@@ -75,3 +75,8 @@ double signum(double x)
 	else if (x < 0)
 		return -1;
 }
+
+bool equal(struct Vector u, struct Vector v)
+{
+	return (u.x == v.x) && (u.y == v.y);
+}
