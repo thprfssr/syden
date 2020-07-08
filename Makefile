@@ -11,14 +11,14 @@ Syden: $(objects)
 
 main.o: game.h window.h
 window.o: window.h
-game.o: game.h window.h config.h screen.h controls.h audio.h
-screen.o: screen.h config.h tiles.h controls.h general.h camera.h
+game.o: game.h window.h config.h screen.h controls.h audio.h character.h
+screen.o: screen.h config.h tiles.h controls.h general.h camera.h character.h
 general.o: general.h
 tiles.o: tiles.h general.h config.h
 camera.o: camera.h controls.h general.h vector.h
 controls.o: controls.h
 audio.o: audio.h
-character.o: character.h general.h vector.h
+character.o: character.h general.h vector.h controls.h
 vector.o: vector.h
 
 .PHONY: clean

@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 
 #include "character.h"
+#include "controls.h"
 #include "general.h"
 #include "vector.h"
 
@@ -26,4 +27,23 @@ void move_character(struct Character c, struct Vector v, double magnitude)
 {
 	c.x += v.x;
 	c.y += v.y;
+}
+
+void character_movement_interface(struct Character c, double magnitude)
+{
+	struct Vector v = ZERO;
+	if (is_button_pressed(BUTTON_UP))
+		v = add(v, VEC_N);
+	if (is_button_pressed(BUTTON_DOWN))
+		v = add(v, VEC_S);
+	if (is_button_pressed(BUTTON_LEFT))
+		v = add(v, VEC_W);
+	if (is_button_pressed(BUTTON_RIGHT))
+		v = add(v, VEC_E);
+
+	v = scale(normalize(v), magnitude);
+	if (multiple_directional_buttons_pressed())
+		v = scale(v, 1 / sqrt(2));
+
+	move_character(c, v, magnitude);
 }
