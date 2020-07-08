@@ -106,6 +106,11 @@ void camera_movement_interface(double magnitude)
 		move_camera(WEST, magnitude);
 	if (is_button_pressed(BUTTON_RIGHT))
 		move_camera(EAST, magnitude);
+
+
+
+	if (controller_status_changed())
+		round_camera_position();
 }
 
 /* This function rounds the camera's coordinates. */
