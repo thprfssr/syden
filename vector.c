@@ -37,6 +37,11 @@ struct Vector add(struct Vector u, struct Vector v)
 	return w;
 }
 
+struct Vector subtract(struct Vector u, struct Vector v)
+{
+	struct Vector w = {u.x - v.x, u.y - v.y};
+	return w;
+}
 
 double gaussian(double a, double x)
 {
