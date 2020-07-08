@@ -119,9 +119,8 @@ int get_camera_position_y()
 
 struct Vector get_camera_center()
 {
-	struct Vector v = ZERO;
-	v.x = CAMERA_POSITION_X + (double) GAME_SCREEN_WIDTH / 2;
-	v.y = CAMERA_POSITION_Y + (double) GAME_SCREEN_HEIGHT / 2;
-
+	/* The coordinates stored for the camera already point to the center
+	 * of the camera. */
+	struct Vector v = {(double) CAMERA_POSITION_X, (double) CAMERA_POSITION_Y};
 	return v;
 }
