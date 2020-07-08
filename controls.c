@@ -6,6 +6,8 @@
 int CONTROLLER_STATUS = 0;
 int PREVIOUS_CONTROLLER_STATUS = 0;
 
+static bool CONTROLLER_STATUS_CHANGED = false;
+
 /* This function accepts an integer, and updates the global variable
  * `CONTROLLER_STATUS` accordingly. */
 void button_pressed(int button)
@@ -29,7 +31,14 @@ bool is_button_pressed(int button)
 /* This function returns true if the controller status changed. */
 bool controller_status_changed()
 {
-	return PREVIOUS_CONTROLLER_STATUS != CONTROLLER_STATUS;
+	if (CONTROLLER_STATUS_CHANGED == false) {
+		CONTROLLER_STATUS_CHANGED =
+			(PREVIOUS_CONTROLLER_STATUS != CONTROLLER_STATUS);
+	} else {
+		CONTROLLER_STATUS_CHANGED = false;
+		PREVIOUS_CONTROLLER_STATUS = CONTROLLER_STATUS;
+	}
+	return CONTROLLER_STATUS_CHANGED;
 }
 
 void handle_input(SDL_KeyboardEvent event)
