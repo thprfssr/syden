@@ -18,6 +18,7 @@ extern struct Vector VEC_SW;
 extern struct Vector ZERO;
 
 
+double magnitude(struct Vector v);
 struct Vector normalize(struct Vector v);
 struct Vector scale(struct Vector v, double scalar);
 struct Vector add(struct Vector u, struct Vector v);

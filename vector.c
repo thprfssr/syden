@@ -14,13 +14,16 @@ struct Vector VEC_SW = {-1 / sqrt(2), 1 / sqrt(2)};
 struct Vector ZERO = {0, 0};
 
 
-
+double magnitude(struct Vector v)
+{
+	return sqrt(v.x * v.x + v.y * v.y);
+}
 
 struct Vector normalize(struct Vector v)
 {
-	double magnitude = sqrt(v.x*v.x + v.y*v.y);
-	if (magnitude != 0)
-		return scale(v, 1 / magnitude);
+	double m = magnitude(v);
+	if (m != 0)
+		return scale(v, 1 / m);
 	else
 		return ZERO;
 }
