@@ -25,6 +25,7 @@ struct Vector subtract(struct Vector u, struct Vector v);
 double gaussian(double x, double a);
 double dot_product(struct Vector u, struct Vector v);
 struct Vector projection(struct Vector v, struct Vector b);
+double signum(double x);
 
 
 #endif
