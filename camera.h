@@ -14,5 +14,7 @@ void move_camera(int direction, double magnitude);
 void camera_movement_interface(double magnitude);
 void round_camera_position();
 void equalize_camera_position_fractional_parts();
+int get_camera_position_x();
+int get_camera_position_y();
 
 #endif

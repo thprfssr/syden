@@ -131,3 +131,29 @@ void equalize_camera_position_fractional_parts()
 	CAMERA_POSITION_X = floor(CAMERA_POSITION_X) + frac;
 	CAMERA_POSITION_Y = floor(CAMERA_POSITION_Y) + frac;
 }
+
+/* This function is an attempt to reduce the jitteriness of the motion. */
+int get_camera_position_x()
+{
+	int x;
+	if (is_button_pressed(BUTTON_RIGHT))
+		x = (int) floor(CAMERA_POSITION_X);
+	else if (is_button_pressed(BUTTON_LEFT))
+		x = (int) ceil(CAMERA_POSITION_X);
+	else
+		x = (int) round(CAMERA_POSITION_X);
+	return x;
+}
+
+/* This function is an attempt to reduce the jitteriness of the motion. */
+int get_camera_position_y()
+{
+	int y;
+	if (is_button_pressed(BUTTON_DOWN))
+		y = (int) floor(CAMERA_POSITION_Y);
+	else if (is_button_pressed(BUTTON_UP))
+		y = (int) ceil(CAMERA_POSITION_Y);
+	else
+		y = (int) round(CAMERA_POSITION_Y);
+	return y;
+}
