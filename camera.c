@@ -6,6 +6,7 @@
 #include "camera.h"
 #include "controls.h"
 #include "general.h"
+#include "vector.h"
 
 double CAMERA_POSITION_X = 0;
 double CAMERA_POSITION_Y = 0;
@@ -45,52 +46,10 @@ bool camera_collision(SDL_Surface *src, int x_center, int y_center)
 	return (x - w < 0) || (y - h < 0) || (w < x + w) || (h < y + h);
 }
 
-void move_camera(int direction, double magnitude)
+void move_camera(struct Vector v)
 {
-	switch(direction) {
-		case (NORTH):
-			CAMERA_POSITION_Y -= magnitude;
-			break;
-		case (SOUTH):
-			CAMERA_POSITION_Y += magnitude;
-			break;
-		case (EAST):
-			CAMERA_POSITION_X += magnitude;
-			break;
-		case (WEST):
-			CAMERA_POSITION_X -= magnitude;
-			break;
-		case (NORTH | EAST):
-			CAMERA_POSITION_X += magnitude / sqrt(2);
-			CAMERA_POSITION_Y -= magnitude / sqrt(2);
-			break;
-		case (NORTH | WEST):
-			CAMERA_POSITION_X -= magnitude / sqrt(2);
-			CAMERA_POSITION_Y -= magnitude / sqrt(2);
-			break;
-		case (SOUTH | EAST):
-			CAMERA_POSITION_X += magnitude / sqrt(2);
-			CAMERA_POSITION_Y += magnitude / sqrt(2);
-			break;
-		case (SOUTH | WEST):
-			CAMERA_POSITION_X -= magnitude / sqrt(2);
-			CAMERA_POSITION_Y += magnitude / sqrt(2);
-			break;
-		case (NORTH | SOUTH | EAST):
-			CAMERA_POSITION_X += magnitude / sqrt(2);
-			break;
-		case (NORTH | SOUTH | WEST):
-			CAMERA_POSITION_X -= magnitude / sqrt(2);
-			break;
-		case (EAST | WEST | NORTH):
-			CAMERA_POSITION_Y -= magnitude / sqrt(2);
-			break;
-		case (EAST | WEST | SOUTH):
-			CAMERA_POSITION_Y += magnitude / sqrt(2);
-			break;
-		default:
-			break;
-	}
+	CAMERA_POSITION_X += v.x;
+	CAMERA_POSITION_Y += v.y;
 }
 
 /* This function acts as a link between the abstract game controller and the
@@ -98,19 +57,24 @@ void move_camera(int direction, double magnitude)
  * accordingly. */
 void camera_movement_interface(double magnitude)
 {
-	if (is_button_pressed(BUTTON_UP))
-		move_camera(NORTH, magnitude);
-	if (is_button_pressed(BUTTON_DOWN))
-		move_camera(SOUTH, magnitude);
-	if (is_button_pressed(BUTTON_LEFT))
-		move_camera(WEST, magnitude);
-	if (is_button_pressed(BUTTON_RIGHT))
-		move_camera(EAST, magnitude);
-
-
-
 	if (controller_status_changed())
 		round_camera_position();
+
+	struct Vector v = {0, 0};
+	if (is_button_pressed(BUTTON_UP))
+		v = add(v, VEC_N);
+	if (is_button_pressed(BUTTON_DOWN))
+		v = add(v, VEC_S);
+	if (is_button_pressed(BUTTON_LEFT))
+		v = add(v, VEC_W);
+	if (is_button_pressed(BUTTON_RIGHT))
+		v = add(v, VEC_E);
+
+	v = scale(normalize(v), magnitude);
+	if (multiple_directional_buttons_pressed())
+		v = scale(v, 1 / sqrt(2));
+
+	move_camera(v);
 }
 
 /* This function rounds the camera's coordinates. */
