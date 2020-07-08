@@ -108,8 +108,11 @@ void move_camera(struct Vector displacement)
 
 	/* If the camera movement direction is different from previously, then
 	 * we round the coordinates in order to reduce jitteriness. */
-	if (!equal(CAMERA_MOVEMENT_DIRECTION, direction))
-		round_camera_position();
+	if (!equal(CAMERA_MOVEMENT_DIRECTION, direction)) {
+		//round_camera_position();
+		CAMERA_POSITION_X = round(CAMERA_POSITION_X);
+		CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
+	}
 	CAMERA_MOVEMENT_DIRECTION = direction;
 
 	CAMERA_POSITION_X += velocity.x;
@@ -119,6 +122,7 @@ void move_camera(struct Vector displacement)
 /* This function acts as a link between the abstract game controller and the
  * camera position. If a button is pressed, then the camera is moved
  * accordingly. */
+/*
 void camera_movement_interface(double magnitude)
 {
 	if (controller_status_changed())
@@ -129,32 +133,41 @@ void camera_movement_interface(double magnitude)
 
 	move_camera(v);
 }
+*/
 
 /* This function rounds the camera's coordinates. */
+/*
 void round_camera_position()
 {
 	CAMERA_POSITION_X = round(CAMERA_POSITION_X);
 	CAMERA_POSITION_Y = round(CAMERA_POSITION_Y);
 }
+*/
 
 /* This function forces the fractional parts of the camera coordinates to be
  * equal. We do this in the hopes of eliminating the jittery motion that occurs
  * when moving diagonally. */
+/*
 void equalize_camera_position_fractional_parts()
 {
 	/* First take the modulus base 1. */
+/*
 	double frac_x = fmod(CAMERA_POSITION_X, 1);
 	double frac_y = fmod(CAMERA_POSITION_Y, 1);
 
 	/* Now, let the new fractional part be the average of these. */
+/*
 	double frac = (frac_x + frac_y) / 2;
 
 	/* Modify the camera coordinates. */
+/*
 	CAMERA_POSITION_X = floor(CAMERA_POSITION_X) + frac;
 	CAMERA_POSITION_Y = floor(CAMERA_POSITION_Y) + frac;
 }
+*/
 
 /* This function is an attempt to reduce the jitteriness of the motion. */
+/*
 int get_camera_position_x()
 {
 	int x;
@@ -164,10 +177,13 @@ int get_camera_position_x()
 		x = (int) ceil(CAMERA_POSITION_X);
 	else
 		x = (int) round(CAMERA_POSITION_X);
-	return x;
+	//return x;
+	return (int) round(CAMERA_POSITION_X);
 }
+*/
 
 /* This function is an attempt to reduce the jitteriness of the motion. */
+/*
 int get_camera_position_y()
 {
 	int y;
@@ -177,8 +193,10 @@ int get_camera_position_y()
 		y = (int) ceil(CAMERA_POSITION_Y);
 	else
 		y = (int) round(CAMERA_POSITION_Y);
-	return y;
+	//return y;
+	return (int) round(CAMERA_POSITION_Y);
 }
+*/
 
 struct Vector get_camera_center()
 {

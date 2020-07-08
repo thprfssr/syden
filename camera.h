@@ -22,11 +22,11 @@ extern struct Vector CAMERA_MOVEMENT_DIRECTION;
 void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center);
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);
 void move_camera(struct Vector v);
-void camera_movement_interface(double magnitude);
-void round_camera_position();
-void equalize_camera_position_fractional_parts();
-int get_camera_position_x();
-int get_camera_position_y();
+//void camera_movement_interface(double magnitude);
+//void round_camera_position();
+//void equalize_camera_position_fractional_parts();
+//int get_camera_position_x();
+//int get_camera_position_y();
 struct Vector get_camera_center();
 
 #endif
