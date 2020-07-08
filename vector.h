@@ -15,6 +15,7 @@ extern struct Vector VEC_NE;
 extern struct Vector VEC_NW;
 extern struct Vector VEC_SE;
 extern struct Vector VEC_SW;
+extern struct Vector ZERO;
 
 
 struct Vector normalize(struct Vector v);

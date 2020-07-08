@@ -60,7 +60,7 @@ void camera_movement_interface(double magnitude)
 	if (controller_status_changed())
 		round_camera_position();
 
-	struct Vector v = {0, 0};
+	struct Vector v = ZERO;
 	if (is_button_pressed(BUTTON_UP))
 		v = add(v, VEC_N);
 	if (is_button_pressed(BUTTON_DOWN))
