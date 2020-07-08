@@ -1,3 +1,4 @@
+#include <math.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
@@ -61,8 +62,9 @@ bool multiple_directional_buttons_pressed()
 }
 
 /* This function generates a vector based on which directional buttons are
- * pressed. */
-struct Vector generate_vector()
+ * pressed. If three or more buttons are pressed, then the magnitude of the
+ * direction is 1/sqrt(2). Otherwise, its magnitude is 1. */
+struct Vector generate_direction()
 {
 	struct Vector v = ZERO;
 	if (is_button_pressed(BUTTON_UP))
@@ -74,7 +76,6 @@ struct Vector generate_vector()
 	if (is_button_pressed(BUTTON_RIGHT))
 		v = add(v, VEC_E);
 
-	v = normalize(v);
 	if (multiple_directional_buttons_pressed())
 		v = scale(v, 1 / sqrt(2));
 

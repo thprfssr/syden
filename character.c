@@ -37,7 +37,7 @@ struct Character move_character(struct Character c, struct Vector v, double magn
 
 struct Character character_movement_interface(struct Character c, double magnitude)
 {
-	struct Vector v = generate_vector();
+	struct Vector v = generate_direction();
 	v = scale(v, magnitude);
 
 	return move_character(c, v, magnitude);

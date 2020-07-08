@@ -29,6 +29,6 @@ bool is_button_pressed(int button);
 bool controller_status_changed();
 void handle_input(SDL_KeyboardEvent event);
 bool multiple_directional_buttons_pressed();
-struct Vector generate_vector();
+struct Vector generate_direction();
 
 #endif
