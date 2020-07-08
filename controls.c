@@ -41,6 +41,24 @@ bool controller_status_changed()
 	return CONTROLLER_STATUS_CHANGED;
 }
 
+/* Determine if multiple directional buttons are pressed. */
+bool multiple_directional_buttons_pressed()
+{
+	int u = (int) is_button_pressed(BUTTON_UP);
+	int d = (int) is_button_pressed(BUTTON_DOWN);
+	int l = (int) is_button_pressed(BUTTON_LEFT);
+	int r = (int) is_button_pressed(BUTTON_RIGHT);
+
+	int tmp[4] = {u, d, l, r};
+	int s = 0;
+	for (int i = 0; i < 4; i++) {
+		if (tmp[i] != 0)
+			s += tmp[i] / tmp[i];
+	}
+
+	return (s > 1);
+}
+
 void handle_input(SDL_KeyboardEvent event)
 {
 	if (event.type == SDL_KEYDOWN)
