@@ -18,7 +18,6 @@ void round_camera_position();
 void equalize_camera_position_fractional_parts();
 int get_camera_position_x();
 int get_camera_position_y();
-double get_camera_center_x();
-double get_camera_center_y();
+struct Vector get_camera_center();
 
 #endif

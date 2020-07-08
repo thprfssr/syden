@@ -117,13 +117,11 @@ int get_camera_position_y()
 	return y;
 }
 
-
-double get_camera_center_x()
+struct Vector get_camera_center()
 {
-	return CAMERA_POSITION_X + GAME_SCREEN_WIDTH / 2;
-}
+	struct Vector v = ZERO;
+	v.x = CAMERA_POSITION_X + (double) GAME_SCREEN_WIDTH / 2;
+	v.y = CAMERA_POSITION_Y + (double) GAME_SCREEN_HEIGHT / 2;
 
-double get_camera_center_y()
-{
-	return CAMERA_POSITION_Y + GAME_SCREEN_HEIGHT / 2;
+	return v;
 }

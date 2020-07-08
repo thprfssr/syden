@@ -39,12 +39,9 @@ struct Character character_movement_interface(struct Character c, double magnitu
 	return move_character(c, v, magnitude);
 }
 
-double get_character_center_x(struct Character c)
+struct Vector get_character_center(struct Character c)
 {
-	return c.x + (double) c.w / 2;
-}
-
-double get_character_center_y(struct Character c)
-{
-	return c.y + (double) c.h / 2;
+	struct Vector v = ZERO;
+	v.x = c.x + (double) c.w / 2;
+	v.y = c.y + (double) c.h / 2;
 }
