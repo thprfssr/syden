@@ -46,11 +46,67 @@ bool camera_collision(SDL_Surface *src, int x_center, int y_center)
 
 	return (x - w < 0) || (y - h < 0) || (w < x + w) || (h < y + h);
 }
-
+/*
 void move_camera(struct Vector v)
 {
 	CAMERA_POSITION_X += v.x;
 	CAMERA_POSITION_Y += v.y;
+}
+*/
+
+/* The displacement vector in the argument would be the location of the player
+ * relative to the center of the camera. The purpose of this function is to
+ * center the camera on the player (or to wherever the displacement vector
+ * points). */
+void move_camera(struct Vector displacement)
+{
+	double v_M = CAMERA_MAX_SPEED;
+	double v_m = CAMERA_MIN_SPEED;
+	double x_D = CAMERA_DEADZONE_X;
+	double x_J = CAMERA_JAILZONE_X;
+	double y_D = CAMERA_DEADZONE_Y;
+	double y_J = CAMERA_JAILZONE_Y;
+
+	/* We wanna move either in the cardinal directions or in the diagonal
+	 * directions in order to avoid jitteriness in the motion of the
+	 * camera. */
+	struct Vector direction = {signum(displacement.x), signum(displacement.y)};
+	double speed = 0;
+
+	/* If a component of the displacement vector is within the deadzone,
+	 * then we don't move the camera in that direction. */
+	if (abs(displacement.x) < x_D)
+		direction.x = 0;
+	if (abs(displacement.y) < y_D)
+		direction.y = 0;
+
+	/* If either of the components of the camera are outside the jailzone,
+	 * we wanna move at maximum speed. */
+	if (abs(displacement.x) > x_J || abs(displacement.y) > y_J)
+		speed = CAMERA_MAX_SPEED;
+
+	/* Otherwise, we move at a linear interpolation between the maximum
+	 * speed and the minimum speed. */
+	double v_x = 0;
+	double v_y = 0;
+	if (x_D < abs(displacement.x) < x_J) {
+		double a = (v_M - v_m) / (x_J - x_D);
+		v_x = a * abs(displacement.x) + v_m;
+	}
+	if (y_D < abs(displacement.y) < y_J) {
+		double a = (v_M - v_m) / (y_J - y_D);
+		v_y = a * abs(displacement.y) + v_m;
+	}
+
+	/* Our total speed will be the maximum of these two. */
+	speed = (v_x <= v_y) ? v_y : v_x;
+
+	struct Vector velocity = ZERO;
+	velocity = normalize(direction);
+	velocity = scale(velocity, speed);
+
+	CAMERA_POSITION_X += velocity.x;
+	CAMERA_POSITION_Y += velocity.y;
 }
 
 /* This function acts as a link between the abstract game controller and the
@@ -123,17 +179,4 @@ struct Vector get_camera_center()
 	 * of the camera. */
 	struct Vector v = {(double) CAMERA_POSITION_X, (double) CAMERA_POSITION_Y};
 	return v;
-}
-
-struct Vector camera_movement_vector(struct Vector v)
-{
-	if (abs(v.x) < 10)
-		v.x = 0;
-	if (abs(v.y) < 10)
-		v.y = 0;
-
-	struct Vector N = {signum(v.x), signum(v.y)};
-	struct Vector w = projection(v, N);
-	w = scale(w, 0.005);
-	return w;
 }

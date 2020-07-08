@@ -85,7 +85,6 @@ void play()
 		struct Vector v_N = get_character_center(Nestor);
 		struct Vector v_C = get_camera_center();
 		struct Vector v = subtract(v_N, v_C);
-		v = camera_movement_vector(v);
 		move_camera(v);
 		draw_character(Nestor, TEST_REGION);
 
