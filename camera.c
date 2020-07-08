@@ -124,3 +124,16 @@ struct Vector get_camera_center()
 	struct Vector v = {(double) CAMERA_POSITION_X, (double) CAMERA_POSITION_Y};
 	return v;
 }
+
+struct Vector camera_movement_vector(struct Vector v)
+{
+	if (abs(v.x) < 10)
+		v.x = 0;
+	if (abs(v.y) < 10)
+		v.y = 0;
+
+	struct Vector N = {signum(v.x), signum(v.y)};
+	struct Vector w = projection(v, N);
+	w = scale(w, 0.005);
+	return w;
+}

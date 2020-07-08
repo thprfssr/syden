@@ -3,11 +3,13 @@
 #include <SDL2/SDL_image.h>
 
 #include "audio.h"
+#include "camera.h"
 #include "character.h"
 #include "config.h"
 #include "controls.h"
 #include "game.h"
 #include "screen.h"
+#include "vector.h"
 #include "window.h"
 
 /* If this function returns true, then the game loop continues. If it returns
@@ -79,7 +81,13 @@ void play()
 
 		/* Move character and draw it. */
 		Nestor = character_movement_interface(Nestor, 1.5);
-		draw_character(Nestor, game_screen);
+		//struct Vector v_N = {Nestor.x, Nestor.y};
+		struct Vector v_N = get_character_center(Nestor);
+		struct Vector v_C = get_camera_center();
+		struct Vector v = subtract(v_N, v_C);
+		v = camera_movement_vector(v);
+		move_camera(v);
+		draw_character(Nestor, TEST_REGION);
 
 		/* Evenly scale the game screen to fit snuggly within the main
 		 * window screen. */
