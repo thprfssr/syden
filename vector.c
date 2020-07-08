@@ -52,3 +52,13 @@ double dot_product(struct Vector u, struct Vector v)
 {
 	return u.x * v.x + u.y * v.y;
 }
+
+/* Project v onto b. */
+struct Vector projection(struct Vector v, struct Vector b)
+{
+	struct Vector w = ZERO;
+	w = normalize(b);
+	w = scale(w, dot_product(v, b));
+
+	return w;
+}
