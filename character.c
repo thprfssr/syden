@@ -27,11 +27,8 @@ struct Character move_character(struct Character c, struct Vector v, double magn
 {
 	/* Round the coordinates if the direction of movement changes. */
 	struct Vector N = {signum(c.position.x), signum(c.position.y)};
-	if (!equal(c.direction, N)) {
-		c.position.x = round(c.position.x);
-		c.position.y = round(c.position.y);
-	}
-
+	if (!equal(c.direction, N))
+		c.position = round_vector(c.position);
 
 	c.position = add(c.position, v);
 
