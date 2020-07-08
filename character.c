@@ -44,4 +44,6 @@ struct Vector get_character_center(struct Character c)
 	struct Vector v = ZERO;
 	v.x = c.x + (double) c.w / 2;
 	v.y = c.y + (double) c.h / 2;
+
+	return v;
 }
