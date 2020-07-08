@@ -17,6 +17,7 @@
 
 extern double CAMERA_POSITION_X;
 extern double CAMERA_POSITION_Y;
+extern struct Vector CAMERA_MOVEMENT_DIRECTION;
 
 void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center);
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);

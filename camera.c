@@ -11,6 +11,7 @@
 
 double CAMERA_POSITION_X = 0;
 double CAMERA_POSITION_Y = 0;
+struct Vector CAMERA_MOVEMENT_DIRECTION = {0, 0};
 
 
 /* This function takes a large surface `src`, and draws it onto `dst`. However,
@@ -104,6 +105,12 @@ void move_camera(struct Vector displacement)
 	struct Vector velocity = ZERO;
 	velocity = normalize(direction);
 	velocity = scale(velocity, speed);
+
+	/* If the camera movement direction is different from previously, then
+	 * we round the coordinates in order to reduce jitteriness. */
+	if (!equal(CAMERA_MOVEMENT_DIRECTION, direction))
+		round_camera_position();
+	CAMERA_MOVEMENT_DIRECTION = direction;
 
 	CAMERA_POSITION_X += velocity.x;
 	CAMERA_POSITION_Y += velocity.y;
