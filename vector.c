@@ -47,3 +47,8 @@ double gaussian(double x, double a)
 {
 	return exp(-a * x * x);
 }
+
+double dot_product(struct Vector u, struct Vector v)
+{
+	return u.x * v.x + u.y * v.y;
+}

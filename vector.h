@@ -23,6 +23,7 @@ struct Vector scale(struct Vector v, double scalar);
 struct Vector add(struct Vector u, struct Vector v);
 struct Vector subtract(struct Vector u, struct Vector v);
 double gaussian(double x, double a);
+double dot_product(struct Vector u, struct Vector v);
 
 
 #endif
