@@ -17,8 +17,8 @@
 #define BUTTON_L	(1 << 10)
 #define BUTTON_R	(1 << 11)
 
-int CONTROLLER_STATUS;
-int PREVIOUS_CONTROLLER_STATUS;
+extern int CONTROLLER_STATUS;
+extern int PREVIOUS_CONTROLLER_STATUS;
 
 void button_pressed(int button);
 void button_released(int button);
