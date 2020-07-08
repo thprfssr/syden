@@ -15,7 +15,7 @@ game.o: game.h window.h config.h screen.h controls.h audio.h character.h
 screen.o: screen.h config.h tiles.h controls.h general.h camera.h character.h
 general.o: general.h
 tiles.o: tiles.h general.h config.h
-camera.o: camera.h controls.h general.h vector.h
+camera.o: camera.h controls.h general.h vector.h config.h
 controls.o: controls.h vector.h
 audio.o: audio.h
 character.o: character.h general.h vector.h controls.h

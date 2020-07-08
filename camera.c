@@ -4,6 +4,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "camera.h"
+#include "config.h"
 #include "controls.h"
 #include "general.h"
 #include "vector.h"
@@ -114,4 +115,15 @@ int get_camera_position_y()
 	else
 		y = (int) round(CAMERA_POSITION_Y);
 	return y;
+}
+
+
+double get_camera_center_x()
+{
+	return CAMERA_POSITION_X + GAME_SCREEN_WIDTH / 2;
+}
+
+double get_camera_center_y()
+{
+	return CAMERA_POSITION_Y + GAME_SCREEN_HEIGHT / 2;
 }
