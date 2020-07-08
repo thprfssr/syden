@@ -15,5 +15,6 @@ extern struct Character Nestor;
 
 
 void draw_character(struct Character c, SDL_Surface *background);
+void move_character(struct Character c, int direction, double magnitude);
 
 #endif
