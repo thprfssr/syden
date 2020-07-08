@@ -30,6 +30,7 @@ double dot_product(struct Vector u, struct Vector v);
 struct Vector projection(struct Vector v, struct Vector b);
 double signum(double x);
 bool equal(struct Vector v, struct Vector u);
+struct Vector round_vector(struct Vector v);
 
 
 #endif

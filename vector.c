@@ -80,3 +80,11 @@ bool equal(struct Vector u, struct Vector v)
 {
 	return (u.x == v.x) && (u.y == v.y);
 }
+
+struct Vector round_vector(struct Vector v)
+{
+	v.x = round(v.x);
+	v.y = round(v.y);
+
+	return v;
+}
