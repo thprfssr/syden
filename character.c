@@ -7,7 +7,7 @@
 #include "vector.h"
 
 /* Define the character Nestor */
-struct Character Nestor = {0, 0, 16, 16};
+struct Character Nestor;
 
 
 
@@ -23,13 +23,15 @@ void draw_character(struct Character c, SDL_Surface *background)
 				0x00, 0x00, 0x00));
 }
 
-void move_character(struct Character c, struct Vector v, double magnitude)
+struct Character move_character(struct Character c, struct Vector v, double magnitude)
 {
 	c.x += v.x;
 	c.y += v.y;
+
+	return c;
 }
 
-void character_movement_interface(struct Character c, double magnitude)
+struct Character character_movement_interface(struct Character c, double magnitude)
 {
 	struct Vector v = ZERO;
 	if (is_button_pressed(BUTTON_UP))
@@ -45,5 +47,5 @@ void character_movement_interface(struct Character c, double magnitude)
 	if (multiple_directional_buttons_pressed())
 		v = scale(v, 1 / sqrt(2));
 
-	move_character(c, v, magnitude);
+	return move_character(c, v, magnitude);
 }

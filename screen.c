@@ -28,7 +28,7 @@ void load_screen_resources()
 void draw_game_screen(SDL_Surface *screen)
 {
 	/* Move the camera if a button is pressed. */
-	camera_movement_interface(1.5);
+	//camera_movement_interface(1.5);
 
 	/* Copy the region onto the screen. */
 	int X = get_camera_position_x();

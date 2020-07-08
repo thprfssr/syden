@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "audio.h"
+#include "character.h"
 #include "config.h"
 #include "controls.h"
 #include "game.h"
@@ -48,6 +49,12 @@ void play()
 	/* Load screen resources. */
 	load_screen_resources();
 
+	/* Define the character. */
+	Nestor.x = 0;
+	Nestor.y = 0;
+	Nestor.w = 16;
+	Nestor.h = 16;
+
 	bool loop_condition = true;
 	while (loop_condition) {
 
@@ -68,6 +75,11 @@ void play()
 			     SDL_MapRGB(game_screen->format,
 					0xff, 0xff, 0xff));
 		draw_game_screen(game_screen);
+
+
+		/* Move character and draw it. */
+		Nestor = character_movement_interface(Nestor, 1.5);
+		draw_character(Nestor, game_screen);
 
 		/* Evenly scale the game screen to fit snuggly within the main
 		 * window screen. */
