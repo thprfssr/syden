@@ -43,7 +43,7 @@ struct Vector subtract(struct Vector u, struct Vector v)
 	return w;
 }
 
-double gaussian(double a, double x)
+double gaussian(double x, double a)
 {
 	return exp(-a * x * x);
 }
