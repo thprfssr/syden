@@ -25,6 +25,13 @@ void draw_character(struct Character c, SDL_Surface *background)
 
 struct Character move_character(struct Character c, struct Vector v, double magnitude)
 {
+	/* Round the coordinates if the direction of movement changes. */
+	struct Vector N = {signum(c.x), signum(c.y)};
+	if (!equal(c.direction, N)) {
+		c.x = round(c.x);
+		c.y = round(c.y);
+	}
+
 	c.x += v.x;
 	c.y += v.y;
 

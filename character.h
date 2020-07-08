@@ -11,6 +11,7 @@ struct Character
 	double y;
 	int w;
 	int h;
+	struct Vector direction;
 };
 
 extern struct Character Nestor;
