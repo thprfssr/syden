@@ -18,7 +18,7 @@ tiles.o: tiles.h general.h config.h
 camera.o: camera.h controls.h general.h vector.h
 controls.o: controls.h
 audio.o: audio.h
-character.o: character.h general.h
+character.o: character.h general.h vector.h
 vector.o: vector.h
 
 .PHONY: clean

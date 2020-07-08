@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 
+#include "vector.h"
+
 struct Character
 {
 	double x;
@@ -15,6 +17,6 @@ extern struct Character Nestor;
 
 
 void draw_character(struct Character c, SDL_Surface *background);
-void move_character(struct Character c, int direction, double magnitude);
+void move_character(struct Character c, struct Vector v, double magnitude);
 
 #endif
