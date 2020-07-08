@@ -60,19 +60,8 @@ void camera_movement_interface(double magnitude)
 	if (controller_status_changed())
 		round_camera_position();
 
-	struct Vector v = ZERO;
-	if (is_button_pressed(BUTTON_UP))
-		v = add(v, VEC_N);
-	if (is_button_pressed(BUTTON_DOWN))
-		v = add(v, VEC_S);
-	if (is_button_pressed(BUTTON_LEFT))
-		v = add(v, VEC_W);
-	if (is_button_pressed(BUTTON_RIGHT))
-		v = add(v, VEC_E);
-
-	v = scale(normalize(v), magnitude);
-	if (multiple_directional_buttons_pressed())
-		v = scale(v, 1 / sqrt(2));
+	struct Vector v = generate_vector();
+	v = scale(v, magnitude);
 
 	move_camera(v);
 }
