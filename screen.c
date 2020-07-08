@@ -31,7 +31,7 @@ void draw_game_screen(SDL_Surface *screen)
 	//camera_movement_interface(1.5);
 
 	/* Copy the region onto the screen. */
-	int X = (int) round(CAMERA_POSITION_X); //get_camera_position_x();
-	int Y = (int) round(CAMERA_POSITION_Y); //get_camera_position_y();
+	int X = (int) round(CAMERA.position.x); //get_camera_position_x();
+	int Y = (int) round(CAMERA.position.y); //get_camera_position_y();
 	camera_view(TEST_REGION, screen, X, Y);
 }

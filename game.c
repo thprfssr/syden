@@ -83,9 +83,9 @@ void play()
 		Nestor = character_movement_interface(Nestor, 1.5);
 		//struct Vector v_N = {Nestor.x, Nestor.y};
 		struct Vector v_N = get_character_center(Nestor);
-		struct Vector v_C = get_camera_center();
+		struct Vector v_C = get_camera_center(CAMERA);
 		struct Vector v = subtract(v_N, v_C);
-		move_camera(v);
+		CAMERA = move_camera(CAMERA, v);
 		draw_character(Nestor, TEST_REGION);
 
 		/* Evenly scale the game screen to fit snuggly within the main
