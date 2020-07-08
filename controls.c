@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 
 #include "controls.h"
+#include "vector.h"
 
 int CONTROLLER_STATUS = 0;
 int PREVIOUS_CONTROLLER_STATUS = 0;
@@ -57,6 +58,27 @@ bool multiple_directional_buttons_pressed()
 	}
 
 	return (s > 1);
+}
+
+/* This function generates a vector based on which directional buttons are
+ * pressed. */
+struct Vector generate_vector()
+{
+	struct Vector v = ZERO;
+	if (is_button_pressed(BUTTON_UP))
+		v = add(v, VEC_N);
+	if (is_button_pressed(BUTTON_DOWN))
+		v = add(v, VEC_S);
+	if (is_button_pressed(BUTTON_LEFT))
+		v = add(v, VEC_W);
+	if (is_button_pressed(BUTTON_RIGHT))
+		v = add(v, VEC_E);
+
+	v = normalize(v);
+	if (multiple_directional_buttons_pressed())
+		v = scale(v, 1 / sqrt(2));
+
+	return v;
 }
 
 void handle_input(SDL_KeyboardEvent event)
