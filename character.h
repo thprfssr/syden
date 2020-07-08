@@ -7,10 +7,9 @@
 
 struct Character
 {
-	double x;
-	double y;
 	int w;
 	int h;
+	struct Vector position;
 	struct Vector direction;
 };
 

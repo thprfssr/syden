@@ -52,8 +52,8 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
-	Nestor.x = 0;
-	Nestor.y = 0;
+	Nestor.position.x = 0;
+	Nestor.position.y = 0;
 	Nestor.w = 16;
 	Nestor.h = 16;
 
