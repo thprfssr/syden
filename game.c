@@ -53,11 +53,11 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
-	Nestor.position.x = 0;
-	Nestor.position.y = 0;
+	Nestor.position.x = 200;
+	Nestor.position.y = 100;
 	Nestor.w = 32;
 	Nestor.h = 32;
-	Nestor.animation = LINK_WALKING_SOUTH;
+	Nestor.animation = LINK_IDLE_SOUTH;
 
 	bool loop_condition = true;
 	while (loop_condition) {
