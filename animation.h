@@ -12,6 +12,8 @@ struct Animation {
 };
 
 extern struct Animation LINK_WALKING_SOUTH;
+extern struct Animation LINK_WALKING_NORTH;
+extern struct Animation LINK_WALKING_WEST;
 
 SDL_Surface* get_animation_frame(struct Animation animation, int index);
 

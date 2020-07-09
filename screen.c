@@ -25,6 +25,8 @@ void load_screen_resources()
 	CANVAS = draw_region(TILE_ATLAS, MAP_CSV);
 	//SDL_BlitSurface(TILE_ATLAS, NULL, CANVAS, NULL);
 	LINK_WALKING_SOUTH.surface = load_resource(LINK_WALKING_SOUTH.filename);
+	LINK_WALKING_NORTH.surface = load_resource(LINK_WALKING_NORTH.filename);
+	LINK_WALKING_WEST.surface = load_resource(LINK_WALKING_WEST.filename);
 }
 
 
@@ -43,7 +45,7 @@ void draw_game_screen(SDL_Surface *screen)
 	//draw_character(Nestor, CANVAS);
 
 	/* Draw link. */
-	SDL_Surface *frame = get_animation_frame(LINK_WALKING_SOUTH, (TIME / 3) % LINK_WALKING_SOUTH.frame_count);
+	SDL_Surface *frame = get_animation_frame(LINK_WALKING_WEST, (TIME / 3) % LINK_WALKING_WEST.frame_count);
 	draw_character(Nestor, frame, CANVAS);
 	//SDL_BlitSurface(frame, NULL, CANVAS, NULL);
 	SDL_FreeSurface(frame);
