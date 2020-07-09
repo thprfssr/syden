@@ -53,8 +53,8 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
-	Nestor.position.x = 200;
-	Nestor.position.y = 100;
+	Nestor.position.x = 330;
+	Nestor.position.y = 247;
 	Nestor.w = 32;
 	Nestor.h = 32;
 	Nestor.animation = LINK_IDLE_SOUTH;
