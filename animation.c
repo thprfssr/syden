@@ -11,6 +11,8 @@ struct Animation LINK_WALKING_WEST = {NULL, 10, 32, 32,
 	"resources/link_walking_west.png"};
 struct Animation LINK_WALKING_EAST = {NULL, 10, 32, 32,
 	"resources/link_walking_east.png"};
+struct Animation LINK_IDLE_SOUTH = {NULL, 1, 32, 32,
+	"resources/link_idle_south.png"};
 
 SDL_Surface* get_animation_frame(struct Animation animation, int index)
 {

@@ -69,7 +69,7 @@ struct Character set_character_animation(struct Character c)
 	else if (equal(v, VEC_W))
 		c.animation = LINK_WALKING_WEST;
 	else
-		c.animation = LINK_WALKING_SOUTH;
+		c.animation = LINK_IDLE_SOUTH;
 
 	return c;
 }
