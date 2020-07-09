@@ -11,7 +11,7 @@ struct Character Nestor;
 
 
 
-void draw_character(struct Character c, SDL_Surface *background)
+void draw_character(struct Character c, SDL_Surface *frame, SDL_Surface *background)
 {
 	SDL_Rect *rect = malloc(sizeof(SDL_Rect));
 	rect->x = (int) round(c.position.x);
@@ -19,8 +19,11 @@ void draw_character(struct Character c, SDL_Surface *background)
 	rect->h = c.h;
 	rect->w = c.w;
 
+	/*
 	SDL_FillRect(background, rect, SDL_MapRGB(background->format,
 				0x00, 0x00, 0x00));
+	*/
+	SDL_BlitSurface(frame, NULL, background, rect);
 }
 
 struct Character move_character(struct Character c, struct Vector v, double magnitude)

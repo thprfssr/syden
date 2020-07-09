@@ -55,8 +55,8 @@ void play()
 	/* Define the character. */
 	Nestor.position.x = 0;
 	Nestor.position.y = 0;
-	Nestor.w = 16;
-	Nestor.h = 16;
+	Nestor.w = 32;
+	Nestor.h = 32;
 
 	bool loop_condition = true;
 	while (loop_condition) {
