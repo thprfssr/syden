@@ -28,7 +28,11 @@ void load_screen_resources()
 	LINK_WALKING_NORTH.surface = load_resource(LINK_WALKING_NORTH.filename);
 	LINK_WALKING_WEST.surface = load_resource(LINK_WALKING_WEST.filename);
 	LINK_WALKING_EAST.surface = load_resource(LINK_WALKING_EAST.filename);
+
 	LINK_IDLE_SOUTH.surface = load_resource(LINK_IDLE_SOUTH.filename);
+	LINK_IDLE_NORTH.surface = load_resource(LINK_IDLE_NORTH.filename);
+	LINK_IDLE_WEST.surface = load_resource(LINK_IDLE_WEST.filename);
+	LINK_IDLE_EAST.surface = load_resource(LINK_IDLE_EAST.filename);
 }
 
 

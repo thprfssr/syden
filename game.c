@@ -104,6 +104,5 @@ void play()
 		SDL_UpdateWindowSurface(window);
 		SDL_Delay(1000 / DESIRED_FPS);
 		TIME++;
-		printf("%d\n", TIME);
 	}
 }

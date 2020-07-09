@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdbool.h>
 #include <SDL2/SDL.h>
 
 #include "animation.h"
@@ -31,9 +32,20 @@ struct Character move_character(struct Character c, struct Vector v, double magn
 {
 	/* Round the coordinates if the direction of movement changes. */
 	struct Vector N = {signum(v.x), signum(v.y)};
-	if (!equal(c.direction, N))
+	if (!equal(c.moving_direction, N))
 		c.position = round_vector(c.position);
-	c.direction = N;
+	c.moving_direction = N;
+	c.is_moving = !equal(N, ZERO);
+
+	if (c.is_moving) {
+		if (dot_product(N, VEC_N) == 0 || dot_product(N, VEC_E) == 0) {
+			c.facing_direction = N;
+		} else {
+			c.facing_direction = normalize(projection(N, VEC_E));
+		}
+	}
+
+
 
 	c.position = add(c.position, v);
 
@@ -59,17 +71,28 @@ struct Vector get_character_center(struct Character c)
 
 struct Character set_character_animation(struct Character c)
 {
-	struct Vector v = normalize(c.direction);
-	if (equal(v, VEC_N))
-		c.animation = LINK_WALKING_NORTH;
-	else if (equal(v, VEC_S))
-		c.animation = LINK_WALKING_SOUTH;
-	else if (equal(v, VEC_E))
-		c.animation = LINK_WALKING_EAST;
-	else if (equal(v, VEC_W))
-		c.animation = LINK_WALKING_WEST;
-	else
-		c.animation = LINK_IDLE_SOUTH;
+	//struct Vector m = normalize(c.moving_direction);
+	struct Vector f = normalize(c.facing_direction);
+
+	if (c.is_moving) {
+		if (equal(f, VEC_N))
+			c.animation = LINK_WALKING_NORTH;
+		else if (equal(f, VEC_S))
+			c.animation = LINK_WALKING_SOUTH;
+		else if (equal(f, VEC_E))
+			c.animation = LINK_WALKING_EAST;
+		else if (equal(f, VEC_W))
+			c.animation = LINK_WALKING_WEST;
+	} else {
+		if (equal(f, VEC_N))
+			c.animation = LINK_IDLE_NORTH;
+		else if (equal(f, VEC_S))
+			c.animation = LINK_IDLE_SOUTH;
+		else if (equal(f, VEC_E))
+			c.animation = LINK_IDLE_EAST;
+		else if (equal(f, VEC_W))
+			c.animation = LINK_IDLE_WEST;
+	}
 
 	return c;
 }

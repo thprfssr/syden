@@ -1,6 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <stdbool.h>
 #include <SDL2/SDL.h>
 
 #include "animation.h"
@@ -11,7 +12,11 @@ struct Character
 	int w;
 	int h;
 	struct Vector position;
-	struct Vector direction;
+
+	bool is_moving;
+	struct Vector moving_direction;
+	struct Vector facing_direction;
+
 	struct Animation animation;
 };
 
