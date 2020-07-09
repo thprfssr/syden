@@ -57,6 +57,7 @@ void play()
 	Nestor.position.y = 0;
 	Nestor.w = 32;
 	Nestor.h = 32;
+	Nestor.animation = LINK_WALKING_SOUTH;
 
 	bool loop_condition = true;
 	while (loop_condition) {

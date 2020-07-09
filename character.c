@@ -1,6 +1,7 @@
 #include <math.h>
 #include <SDL2/SDL.h>
 
+#include "animation.h"
 #include "character.h"
 #include "controls.h"
 #include "general.h"
@@ -36,7 +37,7 @@ struct Character move_character(struct Character c, struct Vector v, double magn
 
 	c.position = add(c.position, v);
 
-	return c;
+	return set_character_animation(c);
 }
 
 struct Character character_movement_interface(struct Character c, double magnitude)
@@ -54,4 +55,21 @@ struct Vector get_character_center(struct Character c)
 	v.y = c.position.y + (double) c.h / 2;
 
 	return v;
+}
+
+struct Character set_character_animation(struct Character c)
+{
+	struct Vector v = normalize(c.direction);
+	if (equal(v, VEC_N))
+		c.animation = LINK_WALKING_NORTH;
+	else if (equal(v, VEC_S))
+		c.animation = LINK_WALKING_SOUTH;
+	else if (equal(v, VEC_E))
+		c.animation = LINK_WALKING_EAST;
+	else if (equal(v, VEC_W))
+		c.animation = LINK_WALKING_WEST;
+	else
+		c.animation = LINK_WALKING_SOUTH;
+
+	return c;
 }
