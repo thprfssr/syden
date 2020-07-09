@@ -66,7 +66,7 @@ SDL_Surface* draw_region(SDL_Surface *tile_atlas, char *map_csv)
 
 
 	/* Free the resources, and return the region. */
-	SDL_FreeSurface(tile_atlas);
+	//SDL_FreeSurface(tile_atlas);
 	free(copy);
 
 	return region;

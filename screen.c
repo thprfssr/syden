@@ -3,6 +3,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "camera.h"
+#include "character.h"
 #include "config.h"
 #include "controls.h"
 #include "general.h"
@@ -12,6 +13,7 @@
 SDL_Surface *TILE_ATLAS = NULL;
 char *MAP_CSV = NULL;
 SDL_Surface *TEST_REGION = NULL;
+SDL_Surface *CANVAS = NULL;
 
 /* Load resources. */
 void load_screen_resources()
@@ -19,6 +21,8 @@ void load_screen_resources()
 	TILE_ATLAS = load_resource(TILE_ATLAS_PATH);
 	MAP_CSV = read_file("resources/test_map.csv");
 	TEST_REGION = draw_region(TILE_ATLAS, MAP_CSV);
+	CANVAS = draw_region(TILE_ATLAS, MAP_CSV);
+	//SDL_BlitSurface(TILE_ATLAS, NULL, CANVAS, NULL);
 }
 
 
@@ -29,9 +33,15 @@ void draw_game_screen(SDL_Surface *screen)
 {
 	/* Move the camera if a button is pressed. */
 	//camera_movement_interface(1.5);
+	
+	/* Copy the region onto the canvas. */
+	SDL_BlitSurface(TEST_REGION, NULL, CANVAS, NULL);
 
-	/* Copy the region onto the screen. */
+	/* Draw the character on the canvas. */
+	draw_character(Nestor, CANVAS);
+
+	/* Copy the canvas onto the screen. */
 	int X = (int) round(CAMERA.position.x); //get_camera_position_x();
 	int Y = (int) round(CAMERA.position.y); //get_camera_position_y();
-	camera_view(TEST_REGION, screen, X, Y);
+	camera_view(CANVAS, screen, X, Y);
 }
