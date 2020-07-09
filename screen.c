@@ -2,6 +2,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "animation.h"
 #include "camera.h"
 #include "character.h"
 #include "config.h"
@@ -23,6 +24,7 @@ void load_screen_resources()
 	TEST_REGION = draw_region(TILE_ATLAS, MAP_CSV);
 	CANVAS = draw_region(TILE_ATLAS, MAP_CSV);
 	//SDL_BlitSurface(TILE_ATLAS, NULL, CANVAS, NULL);
+	LINK_WALKING_FORWARD.surface = load_resource(LINK_WALKING_FORWARD.filename);
 }
 
 
@@ -39,6 +41,10 @@ void draw_game_screen(SDL_Surface *screen)
 
 	/* Draw the character on the canvas. */
 	draw_character(Nestor, CANVAS);
+
+	/* Draw link. */
+	SDL_Surface *frame = get_animation_frame(LINK_WALKING_FORWARD, (TIME / 3) % LINK_WALKING_FORWARD.frame_count);
+	SDL_BlitSurface(frame, NULL, CANVAS, NULL);
 
 	/* Copy the canvas onto the screen. */
 	int X = (int) round(CAMERA.position.x); //get_camera_position_x();

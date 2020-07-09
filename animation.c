@@ -2,6 +2,10 @@
 
 #include "animation.h"
 
+
+struct Animation LINK_WALKING_FORWARD = {NULL, 10, 32, 32,
+"resources/link_walking_forward.png"};
+
 SDL_Surface* get_animation_frame(struct Animation animation, int index)
 {
 	SDL_Rect src;

@@ -8,6 +8,7 @@
 #include "config.h"
 #include "controls.h"
 #include "game.h"
+#include "general.h"
 #include "screen.h"
 #include "vector.h"
 #include "window.h"
@@ -101,5 +102,7 @@ void play()
 		 * for a specified amount of milliseconds. */
 		SDL_UpdateWindowSurface(window);
 		SDL_Delay(1000 / DESIRED_FPS);
+		TIME++;
+		printf("%d\n", TIME);
 	}
 }

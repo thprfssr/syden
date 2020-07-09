@@ -8,7 +8,10 @@ struct Animation {
 	int frame_count;
 	int w;
 	int h;
+	char *filename;
 };
+
+extern struct Animation LINK_WALKING_FORWARD;
 
 SDL_Surface* get_animation_frame(struct Animation animation, int index);
 

@@ -6,6 +6,8 @@
 
 #include "general.h"
 
+int TIME = 0;
+
 /* Read the contents of a file into  a string. */
 char* read_file(char *filename)
 {
