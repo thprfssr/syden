@@ -67,6 +67,19 @@ void play()
 		while (SDL_PollEvent(&event) != 0)
 			loop_condition = handle_event(event);
 
+
+
+		/* Move character and draw it. */
+		Nestor = character_movement_interface(Nestor, 1.5);
+		//struct Vector v_N = {Nestor.x, Nestor.y};
+		struct Vector v_N = get_character_center(Nestor);
+		struct Vector v_C = get_camera_center(CAMERA);
+		struct Vector v = subtract(v_N, v_C);
+		CAMERA = move_camera(CAMERA, v);
+		draw_character(Nestor, TEST_REGION);
+
+
+
 		/* Overwrite every pixel in the window surface and in the game
 		 * screen with a solid color, and draw the game screen. */
 		window_surface = SDL_GetWindowSurface(window);
@@ -79,14 +92,6 @@ void play()
 		draw_game_screen(game_screen);
 
 
-		/* Move character and draw it. */
-		Nestor = character_movement_interface(Nestor, 1.5);
-		//struct Vector v_N = {Nestor.x, Nestor.y};
-		struct Vector v_N = get_character_center(Nestor);
-		struct Vector v_C = get_camera_center(CAMERA);
-		struct Vector v = subtract(v_N, v_C);
-		CAMERA = move_camera(CAMERA, v);
-		draw_character(Nestor, TEST_REGION);
 
 		/* Evenly scale the game screen to fit snuggly within the main
 		 * window screen. */
