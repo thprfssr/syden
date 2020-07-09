@@ -3,8 +3,8 @@
 #include "animation.h"
 
 
-struct Animation LINK_WALKING_FORWARD = {NULL, 10, 32, 32,
-"resources/link_walking_forward.png"};
+struct Animation LINK_WALKING_SOUTH = {NULL, 10, 32, 32,
+"resources/link_walking_south.png"};
 
 SDL_Surface* get_animation_frame(struct Animation animation, int index)
 {
