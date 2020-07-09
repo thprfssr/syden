@@ -20,7 +20,8 @@ SDL_Surface* get_tile(SDL_Surface *tile_atlas, int n)
 	src.w = S;
 	src.h = S;
 
-	SDL_Surface *tile = SDL_CreateRGBSurface(0, S, S, 32, 0, 0, 0, 0);
+	SDL_Surface *tile = SDL_CreateRGBSurface(0, S, S, 32,
+			RMASK, GMASK, BMASK, AMASK);
 	SDL_BlitSurface(tile_atlas, &src, tile, NULL);
 
 	return tile;
@@ -43,7 +44,8 @@ SDL_Surface* draw_region(SDL_Surface *tile_atlas, char *map_csv)
 	char *entry = strtok(copy, delim);
 
 	/* Create region surface, and start the tile-fetching loop. */
-	SDL_Surface *region = SDL_CreateRGBSurface(0, S*W, S*H, 32, 0, 0, 0, 0);
+	SDL_Surface *region = SDL_CreateRGBSurface(0, S*W, S*H, 32,
+			RMASK, GMASK, BMASK, AMASK);
 	for (int i = 0; i < H * W; i++) {
 		/* Create destination rectangle. */
 		SDL_Rect dst;

@@ -10,7 +10,7 @@ Syden: $(objects)
 	$(CC) $(flags) -o $@ $(objects)
 
 main.o: game.h window.h
-window.o: window.h
+window.o: window.h general.h
 game.o: game.h window.h config.h screen.h controls.h audio.h character.h vector.h camera.h general.h
 screen.o: screen.h config.h tiles.h controls.h general.h camera.h character.h animation.h
 general.o: general.h
@@ -20,7 +20,7 @@ controls.o: controls.h vector.h
 audio.o: audio.h
 character.o: character.h general.h vector.h controls.h animation.h
 vector.o: vector.h
-animation.o: animation.h
+animation.o: animation.h general.h
 
 .PHONY: clean
 clean:
