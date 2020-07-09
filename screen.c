@@ -45,6 +45,7 @@ void draw_game_screen(SDL_Surface *screen)
 	/* Draw link. */
 	SDL_Surface *frame = get_animation_frame(LINK_WALKING_FORWARD, (TIME / 3) % LINK_WALKING_FORWARD.frame_count);
 	SDL_BlitSurface(frame, NULL, CANVAS, NULL);
+	SDL_FreeSurface(frame);
 
 	/* Copy the canvas onto the screen. */
 	int X = (int) round(CAMERA.position.x); //get_camera_position_x();
