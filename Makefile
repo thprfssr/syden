@@ -1,6 +1,6 @@
 CC = gcc
 flags = -w -lm -lSDL2 -lSDL2_image -lSDL2_mixer
-objects = main.o window.o game.o screen.o general.o tiles.o camera.o controls.o audio.o character.o vector.o
+objects = main.o window.o game.o screen.o general.o tiles.o camera.o controls.o audio.o character.o vector.o animation.o
 targets = Syden
 
 all: $(targets)
@@ -20,6 +20,7 @@ controls.o: controls.h vector.h
 audio.o: audio.h
 character.o: character.h general.h vector.h controls.h
 vector.o: vector.h
+animation.o: animation.h
 
 .PHONY: clean
 clean:
