@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL_ttf.h>
 
 #include "audio.h"
 #include "camera.h"
@@ -43,6 +44,19 @@ void play()
 	SDL_Window *window = open_window(MAIN_WINDOW_TITLE);
 	SDL_Surface *window_surface = NULL;
 
+
+
+	TTF_Init();
+
+	TTF_Font *Mono = TTF_OpenFont("resources/DejaVuSansMono.ttf", 24);
+	SDL_Color White = {255, 255, 255};
+	SDL_Color Black = {0, 0, 0};
+	SDL_Surface *message;
+	//SDL_Surface *message = TTF_RenderText_Solid(Mono, "59.9 fps", White);
+
+
+
+
 	/* This is the representation of the game screen. It has the proper
 	 * pixel dimensions. We will scale this surface to fit within the
 	 * window. */
@@ -58,6 +72,8 @@ void play()
 	Nestor.w = 32;
 	Nestor.h = 32;
 	Nestor.animation = LINK_IDLE_SOUTH;
+
+	char s[100];
 
 	bool loop_condition = true;
 	while (loop_condition) {
@@ -98,6 +114,13 @@ void play()
 		/* Evenly scale the game screen to fit snuggly within the main
 		 * window screen. */
 		letterbox(game_screen, window_surface);
+
+
+
+
+		sprintf(s, "%d", TIME);
+		message = TTF_RenderText_Solid(Mono, s, White);
+		SDL_BlitSurface(message, NULL, window_surface, NULL);
 
 		/* Update the main window surface to reflect changes, and sleep
 		 * for a specified amount of milliseconds. */
