@@ -48,7 +48,7 @@ void play()
 
 	TTF_Init();
 
-	TTF_Font *Mono = TTF_OpenFont("resources/DejaVuSansMono.ttf", 24);
+	TTF_Font *Mono = TTF_OpenFont("resources/m5x7.ttf", 24);
 	SDL_Color White = {255, 255, 255};
 	SDL_Color Black = {0, 0, 0};
 	SDL_Surface *message;

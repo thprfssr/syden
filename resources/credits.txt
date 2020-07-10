@@ -1,0 +1,19 @@
+m5x7 Font
+filename:	m5x7.ttf
+author:		Daniel Linssen
+url:		https://managore.itch.io/m5x7
+
+
+FatBoy Sound Font
+filename:	FatBoy-v0.789.sf2
+url:		https://fatboy.site/
+
+Sacred War 8-Bit Version
+filename:	sacredwar.mp3
+author:		Sp00n.exe
+url:		https://www.youtube.com/watch?v=1OfNJEydai0
+
+Farewell of Slavianka 16-Bit Version
+filename:	slavianka.mp3
+author:		helvete1991
+url:		https://www.youtube.com/watch?v=kg0wiW0fBGs
