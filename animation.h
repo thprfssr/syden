@@ -8,6 +8,7 @@ struct Animation {
 	int frame_count;
 	int w;
 	int h;
+	int current_frame;
 	char *filename;
 };
 
