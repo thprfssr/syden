@@ -9,17 +9,17 @@
 #include "vector.h"
 
 /* Define the character Nestor */
-struct Character Nestor;
+struct Character *Nestor;
 
 
 
-void draw_character(struct Character c, SDL_Surface *frame, SDL_Surface *background)
+void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background)
 {
 	SDL_Rect *rect = malloc(sizeof(SDL_Rect));
-	rect->x = (int) round(c.position.x);
-	rect->y = (int) round(c.position.y);
-	rect->h = c.h;
-	rect->w = c.w;
+	rect->x = (int) round(c->position.x);
+	rect->y = (int) round(c->position.y);
+	rect->h = c->h;
+	rect->w = c->w;
 
 	/*
 	SDL_FillRect(background, rect, SDL_MapRGB(background->format,
@@ -28,71 +28,69 @@ void draw_character(struct Character c, SDL_Surface *frame, SDL_Surface *backgro
 	SDL_BlitSurface(frame, NULL, background, rect);
 }
 
-struct Character move_character(struct Character c, struct Vector v, double magnitude)
+void move_character(struct Character *c, struct Vector v, double magnitude)
 {
 	/* Round the coordinates if the direction of movement changes. */
 	struct Vector N = {signum(v.x), signum(v.y)};
-	if (!equal(c.moving_direction, N))
-		c.position = round_vector(c.position);
-	c.moving_direction = N;
-	c.is_moving = !equal(N, ZERO);
+	if (!equal(c->moving_direction, N))
+		c->position = round_vector(c->position);
+	c->moving_direction = N;
+	c->is_moving = !equal(N, ZERO);
 
-	if (c.is_moving) {
+	if (c->is_moving) {
 		if (dot_product(N, VEC_N) == 0 || dot_product(N, VEC_E) == 0) {
-			c.facing_direction = N;
+			c->facing_direction = N;
 		} else {
-			c.facing_direction = normalize(projection(N, VEC_E));
+			c->facing_direction = normalize(projection(N, VEC_E));
 		}
 	}
 
 
 
-	c.position = add(c.position, v);
+	c->position = add(c->position, v);
 
-	return set_character_animation(c);
+	set_character_animation(c);
 }
 
-struct Character character_movement_interface(struct Character c, double magnitude)
+void character_movement_interface(struct Character *c, double magnitude)
 {
 	struct Vector v = generate_direction();
 	v = scale(v, magnitude);
 
-	return move_character(c, v, magnitude);
+	move_character(c, v, magnitude);
 }
 
-struct Vector get_character_center(struct Character c)
+struct Vector get_character_center(struct Character *c)
 {
 	struct Vector v = ZERO;
-	v.x = c.position.x + (double) c.w / 2;
-	v.y = c.position.y + (double) c.h / 2;
+	v.x = c->position.x + (double) c->w / 2;
+	v.y = c->position.y + (double) c->h / 2;
 
 	return v;
 }
 
-struct Character set_character_animation(struct Character c)
+void set_character_animation(struct Character *c)
 {
 	//struct Vector m = normalize(c.moving_direction);
-	struct Vector f = normalize(c.facing_direction);
+	struct Vector f = normalize(c->facing_direction);
 
-	if (c.is_moving) {
+	if (c->is_moving) {
 		if (equal(f, VEC_N))
-			c.animation = LINK_WALKING_NORTH;
+			c->animation = LINK_WALKING_NORTH;
 		else if (equal(f, VEC_S))
-			c.animation = LINK_WALKING_SOUTH;
+			c->animation = LINK_WALKING_SOUTH;
 		else if (equal(f, VEC_E))
-			c.animation = LINK_WALKING_EAST;
+			c->animation = LINK_WALKING_EAST;
 		else if (equal(f, VEC_W))
-			c.animation = LINK_WALKING_WEST;
+			c->animation = LINK_WALKING_WEST;
 	} else {
 		if (equal(f, VEC_N))
-			c.animation = LINK_IDLE_NORTH;
+			c->animation = LINK_IDLE_NORTH;
 		else if (equal(f, VEC_S))
-			c.animation = LINK_IDLE_SOUTH;
+			c->animation = LINK_IDLE_SOUTH;
 		else if (equal(f, VEC_E))
-			c.animation = LINK_IDLE_EAST;
+			c->animation = LINK_IDLE_EAST;
 		else if (equal(f, VEC_W))
-			c.animation = LINK_IDLE_WEST;
+			c->animation = LINK_IDLE_WEST;
 	}
-
-	return c;
 }

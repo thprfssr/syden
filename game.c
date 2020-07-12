@@ -67,11 +67,12 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
-	Nestor.position.x = 330;
-	Nestor.position.y = 247;
-	Nestor.w = 32;
-	Nestor.h = 32;
-	Nestor.animation = LINK_IDLE_SOUTH;
+	Nestor = malloc(sizeof(struct Character));
+	Nestor->position.x = 330;
+	Nestor->position.y = 247;
+	Nestor->w = 32;
+	Nestor->h = 32;
+	Nestor->animation = LINK_IDLE_SOUTH;
 
 	char s[100];
 
@@ -88,7 +89,7 @@ void play()
 
 
 		/* Move character and draw it. */
-		Nestor = character_movement_interface(Nestor, 1.5);
+		character_movement_interface(Nestor, 1.5);
 		//struct Vector v_N = {Nestor.x, Nestor.y};
 		struct Vector v_N = get_character_center(Nestor);
 		struct Vector v_C = get_camera_center(CAMERA);
