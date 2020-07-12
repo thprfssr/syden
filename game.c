@@ -74,6 +74,12 @@ void play()
 	Nestor->h = 32;
 	Nestor->animation = LINK_IDLE_SOUTH;
 
+
+	/* Define the camera */
+	CAMERA = malloc(sizeof(struct Camera));
+	CAMERA->position = ZERO;
+	CAMERA->direction = ZERO;
+
 	char s[100];
 
 	bool loop_condition = true;
@@ -94,7 +100,7 @@ void play()
 		struct Vector v_N = get_character_center(Nestor);
 		struct Vector v_C = get_camera_center(CAMERA);
 		struct Vector v = subtract(v_N, v_C);
-		CAMERA = move_camera(CAMERA, v);
+		move_camera(CAMERA, v);
 		//draw_character(Nestor, TEST_REGION);
 
 
