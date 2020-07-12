@@ -57,7 +57,7 @@ void draw_game_screen(SDL_Surface *screen)
 	SDL_FreeSurface(frame);
 
 	/* Copy the canvas onto the screen. */
-	int X = (int) round(CAMERA.position.x); //get_camera_position_x();
-	int Y = (int) round(CAMERA.position.y); //get_camera_position_y();
+	int X = (int) round(CAMERA->position.x); //get_camera_position_x();
+	int Y = (int) round(CAMERA->position.y); //get_camera_position_y();
 	camera_view(CANVAS, screen, X, Y);
 }

@@ -21,16 +21,16 @@ struct Camera {
 	struct Vector direction;
 };
 
-extern struct Camera CAMERA;
+extern struct Camera *CAMERA;
 
 void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center);
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);
-struct Camera move_camera(struct Camera camera, struct Vector v);
+void move_camera(struct Camera *camera, struct Vector v);
 //void camera_movement_interface(double magnitude);
 //void round_camera_position();
 //void equalize_camera_position_fractional_parts();
 //int get_camera_position_x();
 //int get_camera_position_y();
-struct Vector get_camera_center(struct Camera camera);
+struct Vector get_camera_center(struct Camera *camera);
 
 #endif
