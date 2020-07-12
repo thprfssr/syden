@@ -9,7 +9,7 @@
 #include "general.h"
 #include "vector.h"
 
-struct Camera CAMERA = {{0, 0}, {0, 0}};
+struct Camera *CAMERA;
 
 /* This function takes a large surface `src`, and draws it onto `dst`. However,
  * it only draws as much of `src` as fits in `dst`. The coordinates passed to
@@ -56,7 +56,7 @@ void move_camera(struct Vector v)
  * relative to the center of the camera. The purpose of this function is to
  * center the camera on the player (or to wherever the displacement vector
  * points). */
-struct Camera move_camera(struct Camera camera, struct Vector displacement)
+void move_camera(struct Camera *camera, struct Vector displacement)
 {
 	double v_M = CAMERA_MAX_SPEED;
 	double v_m = CAMERA_MIN_SPEED;
@@ -105,14 +105,12 @@ struct Camera move_camera(struct Camera camera, struct Vector displacement)
 
 	/* If the camera movement direction is different from previously, then
 	 * we round the coordinates in order to reduce jitteriness. */
-	if (!equal(camera.direction, direction)) {
+	if (!equal(camera->direction, direction)) {
 		//round_camera_position();
-		camera.position = round_vector(camera.position);
+		camera->position = round_vector(camera->position);
 	}
-	camera.direction = direction;
-	camera.position = add(camera.position, velocity);
-
-	return camera;
+	camera->direction = direction;
+	camera->position = add(camera->position, velocity);
 }
 
 /* This function acts as a link between the abstract game controller and the
@@ -194,10 +192,10 @@ int get_camera_position_y()
 }
 */
 
-struct Vector get_camera_center(struct Camera camera)
+struct Vector get_camera_center(struct Camera *camera)
 {
 	/* The coordinates stored for the camera already point to the center
 	 * of the camera. */
-	struct Vector v = camera.position;
+	struct Vector v = camera->position;
 	return v;
 }
