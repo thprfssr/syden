@@ -51,7 +51,7 @@ void draw_game_screen(SDL_Surface *screen)
 	//draw_character(Nestor, CANVAS);
 
 	/* Draw link. */
-	SDL_Surface *frame = get_animation_frame(Nestor.animation, (TIME / 3) % Nestor.animation.frame_count);
+	SDL_Surface *frame = get_animation_frame(Nestor->animation, (TIME / 3) % Nestor->animation.frame_count);
 	draw_character(Nestor, frame, CANVAS);
 	//SDL_BlitSurface(frame, NULL, CANVAS, NULL);
 	SDL_FreeSurface(frame);
