@@ -31,8 +31,8 @@ SDL_Surface* draw_region(SDL_Surface *tile_atlas, char *map_csv)
 {
 
 	/* Obtain region dimensions and other parameters. */
-	int H = count_lines(map_csv);
-	int W = count_first_line_entries(map_csv);
+	int H = 32; //count_lines(map_csv);
+	int W = 32; //count_first_line_entries(map_csv);
 	int S = TILE_SIDE_LENGTH;
 
 	/* Get first entry from csv-formatted string. We copy `map_csv` because
