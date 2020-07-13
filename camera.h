@@ -16,6 +16,9 @@
 #define CAMERA_MIN_SPEED 0.25
 #define CAMERA_MAX_SPEED 1.5
 
+/* How much the camera is allowed to go out of bounds. */
+#define CAMERA_BOUNDARY_EXCESS 16
+
 #define CAMERA_WIDTH GAME_SCREEN_WIDTH
 #define CAMERA_HEIGHT GAME_SCREEN_HEIGHT
 
@@ -29,7 +32,7 @@ struct Camera {
 extern struct Camera *CAMERA;
 
 void camera_view(struct Camera *camera, SDL_Surface *dst);
-bool camera_collision(SDL_Surface *src, int x_center, int y_center);
+struct Vector camera_collision(struct Camera *camera);
 void move_camera(struct Camera *camera, struct Vector v);
 //void camera_movement_interface(double magnitude);
 //void round_camera_position();

@@ -37,24 +37,30 @@ void camera_view(struct Camera *camera, SDL_Surface *dst)
 	SDL_BlitSurface(src, &rect, dst, NULL);
 }
 
-/* This function checks whether the camera view goes beyond the boundaries of
- * a given surface. */
-bool camera_collision(SDL_Surface *src, int x_center, int y_center)
+/* This function checks whether a camera is moving out of bounds. If so, then
+ * the function returns the direction of the boundary that the camera is going
+ * out of bounds. */
+struct Vector camera_collision(struct Camera *camera)
 {
-	int w = src->w;
-	int h = src->h;
-	int x = x_center;
-	int y = y_center;
+	struct Vector r = camera->position;
+	double sur_w = (double) camera->canvas->w;
+	double sur_h = (double) camera->canvas->h;
+	double cam_w = (double) CAMERA_WIDTH;
+	double cam_h = (double) CAMERA_HEIGHT;
+	struct Vector v = ZERO;
+	double e = CAMERA_BOUNDARY_EXCESS;
 
-	return (x - w < 0) || (y - h < 0) || (w < x + w) || (h < y + h);
+	if (r.x <= -e)
+		v = add(v, VEC_W);
+	if (r.x + cam_w >= sur_w + e)
+		v = add(v, VEC_E);
+	if (r.y <= -e)
+		v = add(v, VEC_N);
+	if (r.y + cam_h >= sur_h + e)
+		v = add(v, VEC_S);
+
+	return v;
 }
-/*
-void move_camera(struct Vector v)
-{
-	CAMERA_POSITION_X += v.x;
-	CAMERA_POSITION_Y += v.y;
-}
-*/
 
 /* The displacement vector in the argument would be the location of the player
  * relative to the center of the camera. The purpose of this function is to
@@ -103,9 +109,24 @@ void move_camera(struct Camera *camera, struct Vector displacement)
 	/* Our total speed will be the maximum of these two. */
 	speed = (v_x <= v_y) ? v_y : v_x;
 
+
+	/* If the camera is out of bounds, we want to correct that. */
+	struct Vector w = camera_collision(camera);
+	if (!equal(ZERO, w)) {
+		if (w.x < 0 && direction.x < 0)
+			direction.x = 0;
+		if (w.x > 0 && direction.x > 0)
+			direction.x = 0;
+		if (w.y < 0 && direction.y < 0)
+			direction.y = 0;
+		if (w.y > 0 && direction.y > 0)
+			direction.y = 0;
+	}
+
 	struct Vector velocity = ZERO;
 	velocity = normalize(direction);
 	velocity = scale(velocity, speed);
+
 
 	/* If the camera movement direction is different from previously, then
 	 * we round the coordinates in order to reduce jitteriness. */
