@@ -24,7 +24,7 @@ struct Camera {
 
 extern struct Camera *CAMERA;
 
-void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center);
+void camera_view(struct Camera *camera, SDL_Surface *dst);
 bool camera_collision(SDL_Surface *src, int x_center, int y_center);
 void move_camera(struct Camera *camera, struct Vector v);
 //void camera_movement_interface(double magnitude);

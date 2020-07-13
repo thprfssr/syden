@@ -11,12 +11,16 @@
 
 struct Camera *CAMERA;
 
-/* This function takes a large surface `src`, and draws it onto `dst`. However,
- * it only draws as much of `src` as fits in `dst`. The coordinates passed to
- * this function simply correspond to the point within `src` at which you wish
- * the view to be centered. */
-void camera_view(SDL_Surface *src, SDL_Surface *dst, int x_center, int y_center)
+/* This function takes the camera canvas (which is supposed to represent the
+ * whole region) and draws a portion of it into a (usually) smaller surface,
+ * called the screen. */
+void camera_view(struct Camera *camera, SDL_Surface *dst)
 {
+	struct Vector r = get_camera_center(camera);
+	int x_center = (int) round(r.x);
+	int y_center = (int) round(r.y);
+
+	SDL_Surface *src = camera->canvas;
 	int w_src = src->w;
 	int h_src = src->h;
 	int w_dst = dst->w;
