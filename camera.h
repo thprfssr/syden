@@ -5,6 +5,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
+#include "config.h"
 #include "vector.h"
 
 
@@ -14,6 +15,9 @@
 #define CAMERA_JAILZONE_Y 60
 #define CAMERA_MIN_SPEED 0.25
 #define CAMERA_MAX_SPEED 1.5
+
+#define CAMERA_WIDTH GAME_SCREEN_WIDTH
+#define CAMERA_HEIGHT GAME_SCREEN_HEIGHT
 
 
 struct Camera {

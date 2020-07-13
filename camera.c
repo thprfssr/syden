@@ -198,8 +198,8 @@ int get_camera_position_y()
 
 struct Vector get_camera_center(struct Camera *camera)
 {
-	/* The coordinates stored for the camera already point to the center
-	 * of the camera. */
-	struct Vector v = camera->position;
-	return v;
+	struct Vector r = camera->position;
+	r.x += (double) CAMERA_WIDTH / 2;
+	r.y += (double) CAMERA_HEIGHT / 2;
+	return r;
 }
