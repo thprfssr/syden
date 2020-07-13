@@ -19,6 +19,7 @@
 struct Camera {
 	struct Vector position;
 	struct Vector direction;
+	SDL_Surface *canvas;
 };
 
 extern struct Camera *CAMERA;

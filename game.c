@@ -79,6 +79,7 @@ void play()
 	CAMERA = malloc(sizeof(struct Camera));
 	CAMERA->position = ZERO;
 	CAMERA->direction = ZERO;
+	CAMERA->canvas = CANVAS;
 
 	char s[100];
 
