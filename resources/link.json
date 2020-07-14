@@ -1,6 +1,8 @@
 "resources/link": {
 	"width":	32,
 	"height":	32,
+	"position-x":	277,
+	"position-y":	300,
 	"walking-south": {
 		"frame-count": 10,
 		"filename": "resources/link_walking_south.png"

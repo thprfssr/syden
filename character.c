@@ -21,9 +21,12 @@ void load_character(struct Character *c, char *filename)
 
 	c->w = atoi(get_json_entry(js, "width"));
 	c->h = atoi(get_json_entry(js, "height"));
+
 	c->position = ZERO;
-	c->position.x = 277;
-	c->position.y = 313;
+	int x = atoi(get_json_entry(js, "position-x"));
+	int y = atoi(get_json_entry(js, "position-y"));
+	c->position.x = x;
+	c->position.y = y;
 	c->moving_direction = ZERO;
 	c->facing_direction = VEC_S;
 
