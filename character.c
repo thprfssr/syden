@@ -23,15 +23,6 @@ void load_character(struct Character *c, char *filename)
 	c->w = atoi(get_json_entry(js, "width"));
 	c->h = atoi(get_json_entry(js, "height"));
 
-
-	c->walking_north = load_animation(js, "walking-north");
-	c->walking_south = load_animation(js, "walking-south");
-	c->walking_east = load_animation(js, "walking-east");
-	c->walking_west = load_animation(js, "walking-west");
-	c->idle_north = load_animation(js, "idle-north");
-	c->idle_south = load_animation(js, "idle-south");
-	c->idle_east = load_animation(js, "idle-east");
-	c->idle_west = load_animation(js, "idle-west");
 }
 
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background)

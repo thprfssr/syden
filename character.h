@@ -17,18 +17,18 @@ struct Character
 	struct Vector moving_direction;
 	struct Vector facing_direction;
 
-	struct Animation animation;
+	struct Animation *animation;
 
 
 
-	struct Animation walking_north;
-	struct Animation walking_south;
-	struct Animation walking_east;
-	struct Animation walking_west;
-	struct Animation idle_north;
-	struct Animation idle_south;
-	struct Animation idle_east;
-	struct Animation idle_west;
+	struct Animation *walking_north;
+	struct Animation *walking_south;
+	struct Animation *walking_east;
+	struct Animation *walking_west;
+	struct Animation *idle_north;
+	struct Animation *idle_south;
+	struct Animation *idle_east;
+	struct Animation *idle_west;
 };
 
 extern struct Character *LINK;

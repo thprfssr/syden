@@ -12,19 +12,19 @@ struct Animation {
 	char *filename;
 };
 
-extern struct Animation LINK_WALKING_SOUTH;
-extern struct Animation LINK_WALKING_NORTH;
-extern struct Animation LINK_WALKING_WEST;
-extern struct Animation LINK_WALKING_EAST;
-extern struct Animation LINK_IDLE_SOUTH;
-extern struct Animation LINK_IDLE_NORTH;
-extern struct Animation LINK_IDLE_WEST;
-extern struct Animation LINK_IDLE_EAST;
+extern struct Animation *LINK_WALKING_SOUTH;
+extern struct Animation *LINK_WALKING_NORTH;
+extern struct Animation *LINK_WALKING_WEST;
+extern struct Animation *LINK_WALKING_EAST;
+extern struct Animation *LINK_IDLE_SOUTH;
+extern struct Animation *LINK_IDLE_NORTH;
+extern struct Animation *LINK_IDLE_WEST;
+extern struct Animation *LINK_IDLE_EAST;
 
-SDL_Surface* get_animation_frame(struct Animation animation, int index);
+SDL_Surface* get_animation_frame(struct Animation *animation, int index);
 
 
-struct Animation load_animation(char *json_str, char *key);
+void load_animation(struct Animation *animation, char *json_str, char *key);
 
 
 
