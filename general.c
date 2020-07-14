@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 
 #include "general.h"
+#include "jsmn.h"
 
 int TIME = 0;
 
@@ -125,4 +126,44 @@ SDL_Surface* load_resource(char *filename)
 {
 	SDL_Surface *surface = IMG_Load(filename);
 	return surface;
+}
+
+
+
+
+char* get_token_string(jsmntok_t token, char *str)
+{
+	/* Don't forget to allocate enough memory for the null character. */
+	char *s = malloc(token.end - token.start + 1);
+	s[token.end - token.start] = '\0';
+
+	strncpy(s, str + token.start, token.end - token.start);
+
+	return s;
+}
+
+char* get_json_entry(char *js, char *key)
+{
+	/* Start parser. */
+	jsmn_parser parser;
+	jsmn_init(&parser);
+
+	/* Get number of tokens required. */
+	const int n = jsmn_parse(&parser, js, strlen(js), NULL, 0);
+	jsmntok_t tokens[n];
+
+	/* Reset parser, and read the JSON contents into the tokens. */
+	jsmn_init(&parser);
+	int r = jsmn_parse(&parser, js, strlen(js), tokens, n);
+
+	for (int i = 0; i < n; i++) {
+		char *s = get_token_string(tokens[i], js);
+
+		if (strcmp(key, s) == 0)
+			return get_token_string(tokens[i + 1], js);
+
+		free(s);
+	}
+
+	return NULL;
 }

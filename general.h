@@ -32,4 +32,6 @@ char** read_lines(char *string);
 char** read_csv_entries(char *string);
 SDL_Surface* load_resource(char *filename);
 
+char* get_json_entry(char *js, char *key);
+
 #endif

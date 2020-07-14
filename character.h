@@ -18,11 +18,22 @@ struct Character
 	struct Vector facing_direction;
 
 	struct Animation animation;
+
+
+
+	struct Animation walking_north;
+	struct Animation walking_south;
+	struct Animation walking_east;
+	struct Animation walking_west;
+	struct Animation idle_north;
+	struct Animation idle_south;
+	struct Animation idle_east;
+	struct Animation idle_west;
 };
 
 extern struct Character *LINK;
 
-
+void load_character(struct Character *c, char *filename);
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background);
 void move_character(struct Character *c, struct Vector v, double magnitude);
 void character_movement_interface(struct Character *c, double magnitude);

@@ -1,4 +1,5 @@
 #include <math.h>
+#include <stdarg.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 
@@ -6,13 +7,19 @@
 #include "character.h"
 #include "controls.h"
 #include "general.h"
-#include "jsmn.h"
 #include "vector.h"
 
 /* Define the character Nestor */
 struct Character *LINK;
 
+void load_character(struct Character *c, char *filename)
+{
+	c = malloc(sizeof(struct Character));
+	char *js = read_file(filename);
 
+	c->w = atoi(get_json_entry(js, "width"));
+	c->h = atoi(get_json_entry(js, "height"));
+}
 
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background)
 {

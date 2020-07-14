@@ -33,6 +33,8 @@ void load_screen_resources()
 	LINK_IDLE_NORTH.surface = load_resource(LINK_IDLE_NORTH.filename);
 	LINK_IDLE_WEST.surface = load_resource(LINK_IDLE_WEST.filename);
 	LINK_IDLE_EAST.surface = load_resource(LINK_IDLE_EAST.filename);
+
+	load_character(LINK, "resources/link.json");
 }
 
 
