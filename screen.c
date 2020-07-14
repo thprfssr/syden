@@ -62,7 +62,4 @@ void draw_game_screen(SDL_Surface *screen)
 	int Y = (int) round(CAMERA->position.y); //get_camera_position_y();
 
 	camera_view(CAMERA, screen);
-
-
-
 }

@@ -6,6 +6,7 @@
 #include "character.h"
 #include "controls.h"
 #include "general.h"
+#include "jsmn.h"
 #include "vector.h"
 
 /* Define the character Nestor */
