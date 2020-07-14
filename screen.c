@@ -53,11 +53,12 @@ void draw_game_screen(SDL_Surface *screen)
 	/* Draw link. */
 	SDL_Surface *frame = get_animation_frame(LINK.animation, (TIME / 3) % LINK.animation.frame_count);
 	draw_character(LINK, frame, CANVAS);
+
 	//SDL_BlitSurface(frame, NULL, CANVAS, NULL);
 	SDL_FreeSurface(frame);
 
 	/* Copy the canvas onto the screen. */
-	int X = (int) round(CAMERA.position.x); //get_camera_position_x();
-	int Y = (int) round(CAMERA.position.y); //get_camera_position_y();
-	camera_view(CANVAS, screen, X, Y);
+	int X = (int) round(CAMERA->position.x); //get_camera_position_x();
+	int Y = (int) round(CAMERA->position.y); //get_camera_position_y();
+	camera_view(CAMERA, screen);
 }

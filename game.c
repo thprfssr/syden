@@ -67,11 +67,18 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
+	LINK = malloc(sizeof(struct Character));
 	LINK.position.x = 330;
 	LINK.position.y = 247;
 	LINK.w = 32;
 	LINK.h = 32;
 	LINK.animation = LINK_IDLE_SOUTH;
+
+	/* Define the camera */
+	CAMERA = malloc(sizeof(struct Camera));
+	CAMERA->position = ZERO;
+	CAMERA->direction = ZERO;
+	CAMERA->canvas = CANVAS;
 
 	char s[100];
 
@@ -88,6 +95,7 @@ void play()
 
 
 		/* Move character and draw it. */
+<<<<<<< HEAD
 		LINK = character_movement_interface(LINK, 1.5);
 		//struct Vector v_N = {LINK.x, LINK.y};
 		struct Vector v_N = get_character_center(LINK);
@@ -95,6 +103,15 @@ void play()
 		struct Vector v = subtract(v_N, v_C);
 		CAMERA = move_camera(CAMERA, v);
 		//draw_character(LINK, TEST_REGION);
+=======
+		character_movement_interface(Nestor, 1.5);
+		//struct Vector v_N = {Nestor.x, Nestor.y};
+		struct Vector v_N = get_character_center(Nestor);
+		struct Vector v_C = get_camera_center(CAMERA);
+		struct Vector v = subtract(v_N, v_C);
+		move_camera(CAMERA, v);
+		//draw_character(Nestor, TEST_REGION);
+>>>>>>> dev
 
 
 

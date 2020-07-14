@@ -23,10 +23,10 @@ struct Character
 extern struct Character LINK;
 
 
-void draw_character(struct Character c, SDL_Surface *frame, SDL_Surface *background);
-struct Character move_character(struct Character c, struct Vector v, double magnitude);
-struct Character character_movement_interface(struct Character c, double magnitude);
-struct Vector get_character_center(struct Character c);
-struct Character set_character_animation(struct Character c);
+void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background);
+void move_character(struct Character *c, struct Vector v, double magnitude);
+void character_movement_interface(struct Character *c, double magnitude);
+struct Vector get_character_center(struct Character *c);
+void set_character_animation(struct Character *c);
 
 #endif
