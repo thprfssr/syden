@@ -48,11 +48,11 @@ void draw_game_screen(SDL_Surface *screen)
 	SDL_BlitSurface(TEST_REGION, NULL, CANVAS, NULL);
 
 	/* Draw the character on the canvas. */
-	//draw_character(Nestor, CANVAS);
+	//draw_character(LINK, CANVAS);
 
 	/* Draw link. */
-	SDL_Surface *frame = get_animation_frame(Nestor.animation, (TIME / 3) % Nestor.animation.frame_count);
-	draw_character(Nestor, frame, CANVAS);
+	SDL_Surface *frame = get_animation_frame(LINK.animation, (TIME / 3) % LINK.animation.frame_count);
+	draw_character(LINK, frame, CANVAS);
 	//SDL_BlitSurface(frame, NULL, CANVAS, NULL);
 	SDL_FreeSurface(frame);
 
