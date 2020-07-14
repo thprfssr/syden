@@ -67,12 +67,16 @@ void play()
 	load_screen_resources();
 
 	/* Define the character. */
+	/*
 	LINK = malloc(sizeof(struct Character));
 	LINK->position.x = 330;
 	LINK->position.y = 247;
 	LINK->w = 32;
 	LINK->h = 32;
 	LINK->animation = LINK_IDLE_SOUTH;
+	*/
+	LINK = malloc(sizeof(struct Character));
+	load_character(LINK, "resources/link.json");
 
 	/* Define the camera */
 	CAMERA = malloc(sizeof(struct Camera));

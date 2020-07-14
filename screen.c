@@ -19,7 +19,7 @@ SDL_Surface *CANVAS = NULL;
 /* Load resources. */
 void load_screen_resources()
 {
-
+/*
 	LINK_WALKING_SOUTH = malloc(sizeof(struct Animation));
 	LINK_WALKING_NORTH = malloc(sizeof(struct Animation));
 	LINK_WALKING_WEST = malloc(sizeof(struct Animation));
@@ -73,12 +73,13 @@ void load_screen_resources()
 	LINK_IDLE_NORTH->filename = "resources/link_idle_north.png";
 	LINK_IDLE_WEST->filename = "resources/link_idle_west.png";
 	LINK_IDLE_EAST->filename = "resources/link_idle_east.png";
-
+*/
 	TILE_ATLAS = load_resource(TILE_ATLAS_PATH);
 	MAP_CSV = read_file("resources/test_map.csv");
 	TEST_REGION = draw_region(TILE_ATLAS, MAP_CSV);
 	CANVAS = draw_region(TILE_ATLAS, MAP_CSV);
 	//SDL_BlitSurface(TILE_ATLAS, NULL, CANVAS, NULL);
+/*
 	LINK_WALKING_SOUTH->surface = load_resource(LINK_WALKING_SOUTH->filename);
 	LINK_WALKING_NORTH->surface = load_resource(LINK_WALKING_NORTH->filename);
 	LINK_WALKING_WEST->surface = load_resource(LINK_WALKING_WEST->filename);
@@ -88,8 +89,10 @@ void load_screen_resources()
 	LINK_IDLE_NORTH->surface = load_resource(LINK_IDLE_NORTH->filename);
 	LINK_IDLE_WEST->surface = load_resource(LINK_IDLE_WEST->filename);
 	LINK_IDLE_EAST->surface = load_resource(LINK_IDLE_EAST->filename);
+*/
 
-	load_character(TEST_CHARACTER, "resources/link.json");
+	//TEST_CHARACTER = malloc(sizeof(struct Character));
+	//load_character(TEST_CHARACTER, "resources/link.json");
 }
 
 

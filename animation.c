@@ -4,7 +4,6 @@
 #include "general.h"
 
 
-
 struct Animation *LINK_WALKING_SOUTH;
 struct Animation *LINK_WALKING_NORTH;
 struct Animation *LINK_WALKING_WEST;

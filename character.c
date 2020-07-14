@@ -17,12 +17,33 @@ struct Character *TEST_CHARACTER;
 
 void load_character(struct Character *c, char *filename)
 {
-	c = malloc(sizeof(struct Character));
 	char *js = read_file(filename);
 
 	c->w = atoi(get_json_entry(js, "width"));
 	c->h = atoi(get_json_entry(js, "height"));
+	c->position = ZERO;
+	c->position.x = 277;
+	c->position.y = 313;
+	c->moving_direction = ZERO;
+	c->facing_direction = VEC_S;
 
+	c->walking_north = malloc(sizeof(struct Animation));
+	c->walking_south = malloc(sizeof(struct Animation));
+	c->walking_east = malloc(sizeof(struct Animation));
+	c->walking_west = malloc(sizeof(struct Animation));
+	c->idle_north = malloc(sizeof(struct Animation));
+	c->idle_south = malloc(sizeof(struct Animation));
+	c->idle_east = malloc(sizeof(struct Animation));
+	c->idle_west = malloc(sizeof(struct Animation));
+
+	load_animation(c->walking_north, js, "walking-north");
+	load_animation(c->walking_south, js, "walking-south");
+	load_animation(c->walking_east, js, "walking-east");
+	load_animation(c->walking_west, js, "walking-west");
+	load_animation(c->idle_north, js, "idle-north");
+	load_animation(c->idle_south, js, "idle-south");
+	load_animation(c->idle_east, js, "idle-east");
+	load_animation(c->idle_west, js, "idle-west");
 }
 
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background)
@@ -88,21 +109,21 @@ void set_character_animation(struct Character *c)
 
 	if (c->is_moving) {
 		if (equal(f, VEC_N))
-			c->animation = LINK_WALKING_NORTH;
+			c->animation = c->walking_north;
 		else if (equal(f, VEC_S))
-			c->animation = LINK_WALKING_SOUTH;
+			c->animation = c->walking_south;
 		else if (equal(f, VEC_E))
-			c->animation = LINK_WALKING_EAST;
+			c->animation = c->walking_east;
 		else if (equal(f, VEC_W))
-			c->animation = LINK_WALKING_WEST;
+			c->animation = c->walking_west;
 	} else {
 		if (equal(f, VEC_N))
-			c->animation = LINK_IDLE_NORTH;
+			c->animation = c->idle_north;
 		else if (equal(f, VEC_S))
-			c->animation = LINK_IDLE_SOUTH;
+			c->animation = c->idle_south;
 		else if (equal(f, VEC_E))
-			c->animation = LINK_IDLE_EAST;
+			c->animation = c->idle_east;
 		else if (equal(f, VEC_W))
-			c->animation = LINK_IDLE_WEST;
+			c->animation = c->idle_west;
 	}
 }
