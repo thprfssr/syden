@@ -35,3 +35,23 @@ SDL_Surface* get_animation_frame(struct Animation animation, int index)
 
 	return frame;
 }
+
+
+
+
+struct Animation load_animation(char *json_str, char *key)
+{
+	char *obj = get_json_entry(json_str, key);
+
+	struct Animation animation;
+	animation.frame_count = atoi(get_json_entry(obj, "frame-count"));
+
+	char *filename = get_json_entry(obj, "filename");
+	animation.surface = load_resource(filename);
+
+	animation.w = atoi(get_json_entry(json_str, "width"));
+	animation.h = atoi(get_json_entry(json_str, "height"));
+	animation.current_frame = 0;
+
+	return animation;
+}

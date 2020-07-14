@@ -24,4 +24,8 @@ extern struct Animation LINK_IDLE_EAST;
 SDL_Surface* get_animation_frame(struct Animation animation, int index);
 
 
+struct Animation load_animation(char *json_str, char *key);
+
+
+
 #endif

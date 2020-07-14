@@ -1,36 +1,36 @@
-"link": {
+"resources/link": {
 	"width":	32,
 	"height":	32,
 	"walking-south": {
 		"frame-count": 10,
-		"filename": "link_walking_south.png"
+		"filename": "resources/link_walking_south.png"
 	},
 	"walking-north": {
 		"frame-count": 10,
-		"filename": "link_walking_north.png"
+		"filename": "resources/link_walking_north.png"
 	},
 	"walking-east": {
 		"frame-count": 10,
-		"filename": "link_walking_east.png"
+		"filename": "resources/link_walking_east.png"
 	},
 	"walking-west": {
 		"frame-count": 10,
-		"filename": "link_walking_west.png"
+		"filename": "resources/link_walking_west.png"
 	},
 	"idle-south": {
 		"frame-count": 1,
-		"filename": "link_idle_south.png"
+		"filename": "resources/link_idle_south.png"
 	},
 	"idle-north": {
 		"frame-count": 1,
-		"filename": "link_idle_north.png"
+		"filename": "resources/link_idle_north.png"
 	},
 	"idle-east": {
 		"frame-count": 1,
-		"filename": "link_idle_east.png"
+		"filename": "resources/link_idle_east.png"
 	},
 	"idle-west": {
 		"frame-count": 1,
-		"filename": "link_idle_west.png"
+		"filename": "resources/link_idle_west.png"
 	}
 }

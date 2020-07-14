@@ -32,6 +32,7 @@ struct Character
 };
 
 extern struct Character *LINK;
+extern struct Character *TEST_CHARACTER;
 
 void load_character(struct Character *c, char *filename);
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background);
