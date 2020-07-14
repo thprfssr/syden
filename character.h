@@ -20,7 +20,7 @@ struct Character
 	struct Animation animation;
 };
 
-extern struct Character LINK;
+extern struct Character *LINK;
 
 
 void draw_character(struct Character *c, SDL_Surface *frame, SDL_Surface *background);

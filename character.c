@@ -9,7 +9,7 @@
 #include "vector.h"
 
 /* Define the character Nestor */
-struct Character LINK;
+struct Character *LINK;
 
 
 
