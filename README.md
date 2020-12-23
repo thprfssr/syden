@@ -38,6 +38,7 @@ map using the WASD keys.
 ## Usage
 
 Simply run the newly created executable to play around with the demo:
+
 	```./Syden```
 
 ### Editing the Tile Map
