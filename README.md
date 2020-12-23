@@ -1,26 +1,77 @@
 # Syden
 
-**SUMMARY**
+## About the Project
 
-This project is intended to be a rewrite of Cythen, my very bare basic game
-engine. I'm doing this because I'm bored this December afternoon. We'll see how
-far this rewrite goes.
+This project is my best attempt at writing the very bare basics of a game
+engine. This is third iteration of the original code, which came about when my
+best friend and I decided that we wanted to make a videogame back in
+high school.
 
-**What's different?**
+The current demo features Link in a custom-made map. You can move around the
+map using the WASD keys.
 
-This time around, I want to rethink the way the program handles different
-regions within the game, and the characters that are located within those
-regions. I also want to have an easier way of modifying these regions, perhaps
-by having them on PNG files, which are then translated by a script into a text
-resource file that can be accessed by the main program. And finally, I want to
-have better documentation.
+## Getting Started
 
-**How to edit regions**
+### Prerequisites
 
-I've just recently discovered Tiled Map Editor, a program which allows one to
-edit tile maps. I strongly recommend to use it in this project. When we're done
-creating the region's tile map, we save it in Tiled's preferred file format so
-that it may be edited later, but then we also export it into a CSV file. This
-CSV file will simply be a table of numbers, which can then be fed into the main
-program. It is the task of the main program to determine the dimensions of the
-region and to draw it.
+* ```SDL2```
+* ```SDL2_image```
+* ```SDL2_mixer```
+* ```SDL2_ttf```
+
+### Compiling
+
+1. Install the ```SDL2``` libraries specified above.
+2. Clone the repo:
+	```git clone https://github.com/thprfssr/syden.git
+3. Change to the project directory:
+	```cd syden```
+4. Build the project:
+	```make```
+
+## Usage
+
+Simply run the newly created executable to play around with the demo:
+	```./Syden```
+
+### Editing the Tile Map
+
+Under the ```resources``` directory you will find the following files:
+* ```resources/tile_atlas.tsx```
+* ```resources/test_map.tmx```
+These files can be edited with the [Tiled](https://www.mapeditor.org/) editor.
+After you do all the editing you want, you need to export ```tile_atlas.tsx```
+as a CSV file ```tile_atlas.csv```.
+
+### Editing the Sprites
+
+The sprite files are contained under the ```resources``` directory:
+* ```resources/link_idle_east.png```
+* ```resources/link_idle_north.png```
+* ```resources/link_idle_south.png```
+* ```resources/link_idle_west.png```
+* ```resources/link_walking_east.png```
+* ```resources/link_walking_north.png```
+* ```resources/link_walking_south.png```
+* ```resources/link_walking_west.png```
+You can edit these files using the [Aseprite](https://www.aseprite.org/)
+editor.
+
+## To Do
+
+* Add collision detection.
+* Enable _A Link to the Past_ style transitions to adjacent regions.
+* Make the camera movement feel more natural.
+* Improve sprite animations.
+* Obtain free/original sprite and tile art.
+* Work on a pause menu.
+
+## License
+
+This project is distributed under the MIT License. See the ```LICENSE``` file
+for more information.
+
+## Contact
+
+Javier Castro - [@thprfssr](https://twitter.com/thprfssr) - <jc@javiercastro.xyz>
+Project Link: [https://github.com/thprfssr/syden.git]
