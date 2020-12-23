@@ -39,7 +39,7 @@ map using the WASD keys.
 
 Simply run the newly created executable to play around with the demo:
 
-	```./Syden```
+```./Syden```
 
 ### Editing the Tile Map
 
@@ -85,4 +85,5 @@ for more information.
 ## Contact
 
 Javier Castro - [@thprfssr](https://twitter.com/thprfssr) - <jc@javiercastro.xyz>
+
 Project Link: [https://github.com/thprfssr/syden.git]
