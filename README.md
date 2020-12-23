@@ -23,7 +23,7 @@ map using the WASD keys.
 
 1. Install the ```SDL2``` libraries specified above.
 2. Clone the repo:
-	```git clone https://github.com/thprfssr/syden.git
+	```git clone https://github.com/thprfssr/syden.git```
 3. Change to the project directory:
 	```cd syden```
 4. Build the project:
