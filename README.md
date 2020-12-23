@@ -22,23 +22,33 @@ map using the WASD keys.
 ### Compiling
 
 1. Install the ```SDL2``` libraries specified above.
+
 2. Clone the repo:
+
 	```git clone https://github.com/thprfssr/syden.git```
+
 3. Change to the project directory:
+
 	```cd syden```
+
 4. Build the project:
+
 	```make```
 
 ## Usage
 
 Simply run the newly created executable to play around with the demo:
+
 	```./Syden```
 
 ### Editing the Tile Map
 
 Under the ```resources``` directory you will find the following files:
+
 * ```resources/tile_atlas.tsx```
+
 * ```resources/test_map.tmx```
+
 These files can be edited with the [Tiled](https://www.mapeditor.org/) editor.
 After you do all the editing you want, you need to export ```tile_atlas.tsx```
 as a CSV file ```tile_atlas.csv```.
@@ -54,6 +64,7 @@ The sprite files are contained under the ```resources``` directory:
 * ```resources/link_walking_north.png```
 * ```resources/link_walking_south.png```
 * ```resources/link_walking_west.png```
+
 You can edit these files using the [Aseprite](https://www.aseprite.org/)
 editor.
 
