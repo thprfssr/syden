@@ -7,17 +7,17 @@ engine. This is third iteration of the original code, which came about when my
 best friend and I decided that we wanted to make a videogame back in
 high school.
 
-The current demo features Link in a custom-made map. You can move around the
-map using the WASD keys.
+The current demo features Link from _The Legend of Zelda_ in a custom-made map.
+You can move around using the WASD keys.
 
 ## Getting Started
 
-### Prerequisites
+### Dependencies
 
-* ```SDL2```
-* ```SDL2_image```
-* ```SDL2_mixer```
-* ```SDL2_ttf```
+* ```sdl2```
+* ```sdl2_image```
+* ```sdl2_mixer```
+* ```sdl2_ttf```
 
 ### Compiling
 
