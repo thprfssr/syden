@@ -21,7 +21,7 @@ You can move around using the WASD keys.
 
 ### Compiling
 
-1. Install the ```SDL2``` libraries specified above.
+1. Install the dependencies listed above.
 
 2. Clone the repo:
 
